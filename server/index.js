@@ -85,9 +85,30 @@ app.get("/api/index/hotStock", async (req, res) => {
   res.json(result.data);
 });
 
-// 股票新闻
-app.get("/api/index/livenews", (req, res) => {
-  const httpUrl = "https://xueqiu.com/statuses/livenews/list.json ";
+// 雪球热帖
+app.get("/api/index/hotList", (req, res) => {
+  const httpUrl = "https://xueqiu.com/statuses/hot/listV2.json";
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      since_id: -1,
+      max_id: -1,
+      size: 15,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+// 7*24
+app.get("/api/index/news", (req, res) => {
+  const httpUrl = "https://xueqiu.com/statuses/livenews/list.json";
 
   const promise = axios.get(httpUrl, {
     ...options,
