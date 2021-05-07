@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
   res.send("apiServer运行中...");
 });
 
-// 获取本地数据
+/* ---------- 获取本地数据---------- */
 app.get("/fixtures/quote", (req, res) => {
   // const httpUrl = fixtures + "quote.json";
   const httpUrl = "http://127.0.0.1:5500/server/fixtures/quote.json";
@@ -48,8 +48,8 @@ app.get("/fixtures/quote", (req, res) => {
     });
 });
 
-// 后台数据
-//
+/* ----------------后台数据 --------*/
+// 指数数据
 app.get("/api/index/quote", (req, res) => {
   const httpUrl =
     "https://stock.xueqiu.com/v5/stock/batch/quote.json?symbol=SH000001,SZ399001,SZ399006,SH000688,HKHSI,HKHSCEI,HKHSCCI,.DJI,.IXIC,.INX";
@@ -61,8 +61,28 @@ app.get("/api/index/quote", (req, res) => {
       res.json(result.data);
     })
     .catch((err) => {
-      res.json(err);
+      res.send(err);
     });
+});
+
+// 热股榜
+app.get("/api/index/hotStock", async (req, res) => {
+  /* 10 全球
+   * 11 美股
+   * 12 沪深
+   * 13 港股
+   **/
+
+  const index = req.query.index || 12;
+  const httpUrl = `https://stock.xueqiu.com/v5/stock/hot_stock/list.json?size=8&_type=${index}&type=${index}`;
+
+  let result;
+  try {
+    result = await axios.get(httpUrl, options);
+  } catch (error) {
+    res.send(err);
+  }
+  res.json(result.data);
 });
 
 app.listen(port, () => {
