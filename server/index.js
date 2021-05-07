@@ -85,6 +85,28 @@ app.get("/api/index/hotStock", async (req, res) => {
   res.json(result.data);
 });
 
+// 股票新闻
+app.get("/api/index/livenews", (req, res) => {
+  const httpUrl = "https://xueqiu.com/statuses/livenews/list.json ";
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      since_id: -1,
+      max_id: -1,
+      count: 15,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+// 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");
 });
