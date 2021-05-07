@@ -17,10 +17,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/index/quote", (req, res) => {
-  const httpUrl = fixtures + "quote.json";
+  // const httpUrl = fixtures + "quote.json";
+  const httpUrl = "http://127.0.0.1:5500/server/fixtures/quote.json";
   console.log(httpUrl);
 
-  const promise = axios.get(httpUrl);
+  const promise = axios.get(httpUrl, {});
   promise
     .then((result) => {
       // console.log(result);
