@@ -16,7 +16,8 @@ app.get("/", (req, res) => {
   res.send("apiServer运行中...");
 });
 
-app.get("/api/index/quote", (req, res) => {
+// 获取本地数据
+app.get("/fixtures/quote", (req, res) => {
   // const httpUrl = fixtures + "quote.json";
   const httpUrl = "http://127.0.0.1:5500/server/fixtures/quote.json";
   console.log(httpUrl);
@@ -25,7 +26,7 @@ app.get("/api/index/quote", (req, res) => {
   promise
     .then((result) => {
       // console.log(result);
-      res.json(result);
+      res.json(result.data);
     })
     .catch((err) => {
       res.json(err);
