@@ -65,26 +65,6 @@ app.get("/api/index/quote", (req, res) => {
     });
 });
 
-// 热股榜
-app.get("/api/index/hotStock", async (req, res) => {
-  /* 10 全球
-   * 11 美股
-   * 12 沪深
-   * 13 港股
-   **/
-
-  const index = req.query.index || 12;
-  const httpUrl = `https://stock.xueqiu.com/v5/stock/hot_stock/list.json?size=8&_type=${index}&type=${index}`;
-
-  let result;
-  try {
-    result = await axios.get(httpUrl, options);
-  } catch (error) {
-    res.send(err);
-  }
-  res.json(result.data);
-});
-
 // 雪球热帖
 app.get("/api/index/hotList", (req, res) => {
   const httpUrl = "https://xueqiu.com/statuses/hot/listV2.json";
@@ -125,6 +105,26 @@ app.get("/api/index/news", (req, res) => {
     .catch((err) => {
       res.send(err);
     });
+});
+
+// 热股榜
+app.get("/api/index/hotStock", async (req, res) => {
+  /* 10 全球
+   * 11 美股
+   * 12 沪深
+   * 13 港股
+   **/
+
+  const index = req.query.index || 12;
+  const httpUrl = `https://stock.xueqiu.com/v5/stock/hot_stock/list.json?size=8&_type=${index}&type=${index}`;
+
+  let result;
+  try {
+    result = await axios.get(httpUrl, options);
+  } catch (error) {
+    res.send(err);
+  }
+  res.json(result.data);
 });
 
 // 监听端口
