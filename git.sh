@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="编写服务器"
+msg="前端项目搭建"
 
 if [ -n "${msg}" ]; then
     git pull
