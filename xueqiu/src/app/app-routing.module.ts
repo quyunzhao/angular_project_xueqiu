@@ -10,6 +10,11 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/index',
+    pathMatch: 'full',
+  },
+  {
+    path: 'index',
     component: IndexComponent,
   },
   {
@@ -20,6 +25,7 @@ const routes: Routes = [
     path: 'newstock',
     component: NewstockComponent,
   },
+
   // 404
   {
     path: '**',

@@ -4,9 +4,27 @@
       <img src="../assets/images/logo.png" alt="" />
     </div>
     <div class="navlist">
-      <div class="navitem" [routerLink]="['/']">首页</div>
-      <div class="navitem" [routerLink]="['/screener']">股票筛选</div>
-      <div class="navitem" [routerLink]="['/newstock']">新股上市</div>
+      <div
+        class="navitem"
+        [routerLink]="['/index']"
+        routerLinkActive="route-active"
+      >
+        首页
+      </div>
+      <div
+        class="navitem"
+        [routerLink]="['/screener']"
+        routerLinkActive="route-active"
+      >
+        股票筛选
+      </div>
+      <div
+        class="navitem"
+        [routerLink]="['/newstock']"
+        routerLinkActive="route-active"
+      >
+        新股上市
+      </div>
     </div>
     <!-- 搜索框 -->
     <div class="search">
