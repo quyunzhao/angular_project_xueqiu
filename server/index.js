@@ -4,10 +4,17 @@ const axios = require("axios");
 
 const app = express();
 
+// 导入路径模块
 const path = require("path");
 
 // 监听端口
 const port = 8080;
+
+// 添加中间间
+// app.use((req, res) => {
+//   res.append("Access-Control-Allow-Origin", "*");
+//   res.append("Access-Control-Allow-Content-Type", "*");
+// });
 
 // 打桩文件路径
 const fixtures = path.resolve("fixtures") + "\\";
