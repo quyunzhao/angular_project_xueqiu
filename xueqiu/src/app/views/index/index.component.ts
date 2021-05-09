@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 // 导入
 import { base } from '../../api/baseApi';
 import axios from 'axios';
@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
   // 默认选择第一个
   circleActive = 0;
 
-  constructor(public router: Router, public route: ActivatedRoute) {
+  constructor(public router: Router) {
     this.getData();
   }
 

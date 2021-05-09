@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+
+// 导入服务
+import { NewService } from 'src/app/service/new.service';
+
 @Component({
   selector: 'app-recommend',
   templateUrl: './recommend.component.html',
-  styleUrls: ['./recommend.component.less']
+  styleUrls: ['./recommend.component.less'],
 })
 export class RecommendComponent implements OnInit {
-
-  constructor() { }
+  constructor(public server: NewService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      // console.log(params);
+      const promise = this.server.getNews();
+      promise
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          // console.log(err);
+          throw err;
+        });
+    });
   }
-
 }

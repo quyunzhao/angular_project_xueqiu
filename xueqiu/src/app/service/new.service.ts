@@ -11,7 +11,14 @@ export class NewService {
   constructor() {}
 
   // 获取新闻
-  getCommandNews(): void {
+  async getNews(): Promise<void> {
     const httpUrl = this.baseUrl + '/api/index/news';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
   }
 }
