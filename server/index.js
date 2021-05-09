@@ -159,6 +159,8 @@ app.get("/api/screener/Tools", async (req, res) => {
 app.get("/api/screener/stocks", (req, res) => {
   const httpUrl = "https://xueqiu.com/service/screener/screen";
 
+  const orderBy = req.query.order_by || "follow7d";
+  const time = new Date().getTime;
   // follow （关注人数）   最热门
   // follow7d (关注人数)   本周新增
   // tweet （讨论条数）     最热门
@@ -172,10 +174,10 @@ app.get("/api/screener/stocks", (req, res) => {
       category: "CN",
       size: 10,
       order: "desc",
-      order_by: "follow7d",
+      order_by: orderBy,
       only_count: 0,
       page: 1,
-      _: new Date().getTime,
+      _: time,
     },
   });
   promise
