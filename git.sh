@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="tab推荐新闻"
+msg="tab7*24"
 
 if [ -n "${msg}" ]; then
     git pull

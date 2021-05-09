@@ -1,10 +1,14 @@
 <div class="newsList">
-  <div class="newsItem" *ngFor="let item of hostList">
+  <div class="newsItem" *ngFor="let item of hostList; let i = index">
     <h3>{{ item.original_status.title }}</h3>
     <p>{{ item.original_status.description }}</p>
     <div>
       <span class="headerImg">
-        <img src="../../../assets/images/weixing.png" alt="" />
+        <!-- <img src="../../../assets/images/weixing.png" alt="" /> -->
+        <img
+          [src]="'../../../assets/images/userIcon/' + (i % 7) + '.png'"
+          alt=""
+        />
       </span>
       <span class="username">
         {{ item.original_status.user.screen_name }}
