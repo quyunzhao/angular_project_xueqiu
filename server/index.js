@@ -11,10 +11,12 @@ const path = require("path");
 const port = 8080;
 
 // 添加中间间
-// app.use((req, res) => {
-//   res.append("Access-Control-Allow-Origin", "*");
-//   res.append("Access-Control-Allow-Content-Type", "*");
-// });
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", "*");
+  res.append("Access-Control-Allow-Content-Type", "*");
+  console.log("Time: %d", Date.now());
+  next();
+});
 
 // 打桩文件路径
 const fixtures = path.resolve("fixtures") + "\\";
