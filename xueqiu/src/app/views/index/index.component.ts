@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 // 导入
 import { base } from '../../api/baseApi';
 import axios from 'axios';
@@ -26,11 +26,18 @@ export class IndexComponent implements OnInit {
   // tab 页签默认选中第一个
   tabActiveIndex = 0;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public route: ActivatedRoute) {
     this.getData();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // 路由跳转
+    this.router.navigate(['index', 'recommend'], {
+      queryParams: {
+        key: 'recommend',
+      },
+    });
+  }
 
   // 获取图片数据
   async getData(): Promise<void> {

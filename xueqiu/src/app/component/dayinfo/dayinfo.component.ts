@@ -35,7 +35,7 @@ export class DayinfoComponent implements OnInit {
     const promise = this.server.getNews();
     promise
       .then((result) => {
-        console.log(result.items);
+        // console.log(result.items);
         this.newsList = result.items;
       })
       .catch((err) => {

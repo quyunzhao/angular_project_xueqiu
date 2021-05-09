@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="tab7*24"
+msg="股票筛选后台设置"
 
 if [ -n "${msg}" ]; then
     git pull
