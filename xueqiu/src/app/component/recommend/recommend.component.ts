@@ -26,7 +26,7 @@ export class RecommendComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       // tabObj[params.id];
       // console.log(params.key);
-      console.log(tabObj[params.key]);
+      // console.log(tabObj[params.key]);
 
       const promise = this.server.getHotList();
       promise

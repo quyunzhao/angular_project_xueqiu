@@ -1,0 +1,60 @@
+.dayInfo {
+  width: 640px;
+
+  .time {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+
+    .day {
+      font-size: 30px;
+      color: #f70;
+      margin-right: 3px;
+    }
+    .month {
+      font-size: 20px;
+      font-weight: 300;
+      color: #999;
+    }
+  }
+
+  // 列表
+  .infoList {
+    .infoItem {
+      display: flex;
+      justify-content: space-between;
+
+      .infoLeft {
+        width: 38px;
+        position: relative;
+
+        .infoTime {
+          padding: 15px 0;
+        }
+        .infoTime:after {
+          width: 10px;
+          height: 10px;
+          content: "";
+          border-radius: 5px;
+          background-color: #edf0f5;
+          position: absolute;
+          right: -25px;
+          top: 20px;
+        }
+        .infoTime:before {
+          width: 4px;
+          height: 80%;
+          content: "";
+          border-radius: 5px;
+          background-color: #edf0f5;
+          position: absolute;
+          right: -22px;
+          top: 40px;
+        }
+      }
+
+      .infoRight {
+        width: 564px;
+      }
+    }
+  }
+}
