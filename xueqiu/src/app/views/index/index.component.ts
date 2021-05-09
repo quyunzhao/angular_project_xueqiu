@@ -14,6 +14,12 @@ export class IndexComponent implements OnInit {
 
   // 指数列表
   quoteList = [];
+
+  // 指数列表位置
+  zhishuListPosition = 'translate(0px)';
+  // 默认选择第一个
+  circleActive = 0;
+
   constructor() {
     this.getData();
   }
@@ -27,5 +33,12 @@ export class IndexComponent implements OnInit {
     this.quoteList = result.data.data.items;
     this.quoteList = this.quoteList.slice(0, 9);
     console.log(this.quoteList);
+  }
+
+  // 切换指数
+  toggleZhishu(index: number): void {
+    console.log(index);
+    this.circleActive = index;
+    this.zhishuListPosition = `translate(-${index * 640}px)`;
   }
 }

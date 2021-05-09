@@ -2,8 +2,12 @@
   <div class="mainLeft">
     <!-- 指数 -->
     <div class="shishu">
-      <div class="zhushuList">
-        <div class="zhishuItem" *ngFor="let item of quoteList">
+      <div class="zhushuList" [style]="{ transform: zhishuListPosition }">
+        <div
+          class="zhishuItem"
+          *ngFor="let item of quoteList"
+          [class]="{ reduce: item.quote.percent < 0 }"
+        >
           <!-- 指数左边 -->
           <div class="zhishuItemLeft">
             <h3>{{ item.quote.name }}</h3>
@@ -31,6 +35,24 @@
             </div>
           </div>
         </div>
+      </div>
+      <!-- 三个小圆点 -->
+      <div class="circleList">
+        <div
+          class="circleItem"
+          (click)="toggleZhishu(0)"
+          [class]="{ active: circleActive === 0 }"
+        ></div>
+        <div
+          class="circleItem"
+          (click)="toggleZhishu(1)"
+          [class]="{ active: circleActive === 1 }"
+        ></div>
+        <div
+          class="circleItem"
+          (click)="toggleZhishu(2)"
+          [class]="{ active: circleActive === 2 }"
+        ></div>
       </div>
     </div>
   </div>

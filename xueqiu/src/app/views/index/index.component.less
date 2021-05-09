@@ -12,6 +12,7 @@
         width: 1920px;
         display: flex;
 
+        // 增长样式
         .zhishuItem {
           display: flex;
           align-items: center;
@@ -46,6 +47,35 @@
               }
             }
           }
+        }
+        // 减少样式
+        .reduce {
+          .zhishuItemLeft {
+            div,
+            p {
+              color: green;
+            }
+          }
+        }
+      }
+
+      // 三个小圆点
+      .circleList {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .circleItem {
+          width: 4px;
+          height: 4px;
+          border: 2px solid #ccc;
+          // background-color: blue;
+          border-radius: 4px;
+          margin: 0 5px;
+        }
+        .active {
+          background-color: blue;
+          border: 2px solid blue;
         }
       }
     }
