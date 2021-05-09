@@ -1,4 +1,9 @@
 @import "../../../styles";
+
+// 股票下跌
+@strokeDown: #093;
+// 股票上涨
+@strokeUp: #d20;
 .main {
   width: 960px;
   margin: 0 auto;
@@ -30,13 +35,13 @@
             div {
               font-size: 18px;
               font-weight: 900;
-              color: red;
+              color: @strokeUp;
             }
 
             p {
               font-size: 12px;
               font-weight: 600;
-              color: red;
+              color: @strokeUp;
               margin: 0;
             }
           }
@@ -54,13 +59,13 @@
               .DataLine {
                 fill: none;
                 stroke-width: 2;
-                stroke: #d20;
+                stroke: @strokeUp;
               }
             }
             // 下降
             .down {
               .DataLine {
-                stroke: #093;
+                stroke: @strokeDown;
               }
             }
           }
@@ -70,7 +75,7 @@
           .zhishuItemLeft {
             div,
             p {
-              color: #093;
+              color: @strokeDown;
             }
           }
         }
