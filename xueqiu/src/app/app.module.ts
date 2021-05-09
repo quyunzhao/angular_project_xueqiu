@@ -9,6 +9,7 @@ import { NewstockComponent } from './views/newstock/newstock.component';
 import { NotfoundComponent } from './views/notfound/notfound.component';
 import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
 import { RecommendComponent } from './component/recommend/recommend.component';
+import { TotimePipe } from './pipe/totime.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RecommendComponent } from './component/recommend/recommend.component';
     NotfoundComponent,
     DayinfoComponent,
     RecommendComponent,
+    TotimePipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

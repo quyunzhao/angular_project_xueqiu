@@ -1,1 +1,20 @@
-<p>recommend works!</p>
+<div class="newsList">
+  <div class="newsItem" *ngFor="let item of hostList">
+    <h3>{{ item.original_status.title }}</h3>
+    <p>{{ item.original_status.description }}</p>
+    <div>
+      <span class="headerImg">
+        <img src="../../../assets/images/weixing.png" alt="" />
+      </span>
+      <span class="username">
+        {{ item.original_status.user.screen_name }}
+      </span>
+      <span class="category">
+        {{ item.original_status.column }}
+      </span>
+      <span class="time">
+        {{ item.original_status.created_at | date: "yyyy/MM/dd HH:mm:ss" }}
+      </span>
+    </div>
+  </div>
+</div>

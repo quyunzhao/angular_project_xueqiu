@@ -11,15 +11,17 @@ import { NewService } from 'src/app/service/new.service';
   styleUrls: ['./recommend.component.less'],
 })
 export class RecommendComponent implements OnInit {
+  hostList = [];
   constructor(public server: NewService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       // console.log(params);
-      const promise = this.server.getNews();
+      const promise = this.server.getHotList();
       promise
         .then((result) => {
-          console.log(result);
+          console.log(result.items);
+          this.hostList = result.items;
         })
         .catch((err) => {
           // console.log(err);

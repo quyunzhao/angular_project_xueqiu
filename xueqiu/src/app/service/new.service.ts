@@ -10,8 +10,20 @@ export class NewService {
 
   constructor() {}
 
-  // 获取新闻
-  async getNews(): Promise<void> {
+  // 雪球热帖
+  async getHotList(): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/index/hotList';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
+
+  // 7*24
+  async getNews(): Promise<any> {
     const httpUrl = this.baseUrl + '/api/index/news';
     let promise;
     try {
