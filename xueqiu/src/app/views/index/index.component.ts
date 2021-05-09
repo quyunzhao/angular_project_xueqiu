@@ -31,6 +31,7 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // 设置默认路由
     // 路由跳转
     this.router.navigate(['index', 'recommend'], {
       queryParams: {

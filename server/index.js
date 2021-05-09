@@ -136,6 +136,25 @@ app.get("/api/index/hotStock", async (req, res) => {
   res.json(result.data);
 });
 
+// 股票筛选的数据
+app.get("/api/index/chooseTools", async (req, res) => {
+  // 获取首页
+  const httpUrl = `https://xueqiu.com/hq/screener`;
+
+  let result;
+  try {
+    result = await axios.get(httpUrl, options);
+  } catch (error) {
+    res.send(err);
+  }
+  // 设置正则
+  let reg = /SNB.data.condition =(.*?);/gis;
+  // 匹配内容
+  // const content = result.data.match(reg);
+  const content = reg.exec(result.data)[1];
+  res.send(content);
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");
