@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="前端项目搭建"
+msg="指数选择前后端调试"
 
 if [ -n "${msg}" ]; then
     git pull

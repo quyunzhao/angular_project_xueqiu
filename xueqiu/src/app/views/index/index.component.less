@@ -1,9 +1,52 @@
 .main {
+  width: 960px;
+  margin: 0 auto;
+
   .mainLeft {
     .shishu {
-      .zhishuItem {
+      width: 640px;
+      overflow: hidden;
+      height: 85px;
+
+      .zhushuList {
+        width: 1920px;
         display: flex;
-        align-items: center;
+
+        .zhishuItem {
+          display: flex;
+          align-items: center;
+          flex: 1;
+
+          // 指数左边
+          .zhishuItemLeft {
+            h3 {
+              font-size: 14px;
+              font-weight: 600;
+              margin: 5px 0;
+            }
+
+            div {
+              font-size: 18px;
+              font-weight: 900;
+              color: red;
+            }
+
+            p {
+              font-size: 12px;
+              font-weight: 600;
+              color: red;
+              margin: 0;
+            }
+          }
+
+          // 指数右边
+          .zhishuItemRight {
+            .svg {
+              svg {
+              }
+            }
+          }
+        }
       }
     }
   }
