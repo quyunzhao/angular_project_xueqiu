@@ -33,19 +33,19 @@ export class IndexComponent implements OnInit {
     // console.log(result.data);
     this.quoteList = result.data.data.items;
     this.quoteList = this.quoteList.slice(0, 9);
-    console.log(this.quoteList);
+    // console.log(this.quoteList);
   }
 
   // 切换指数
   toggleZhishu(index: number): void {
-    console.log(index);
+    // console.log(index);
     this.circleActive = index;
     this.zhishuListPosition = `translate(-${index * 640}px)`;
   }
 
   // tab
   tabClick(index: number): void {
-    console.log(index);
+    // console.log(index);
     const pathList = ['recommend', 'liveNews', 'hushen', 'kechaung'];
     this.router.navigate(['index', pathList[index]], {
       queryParams: {
