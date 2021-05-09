@@ -137,7 +137,7 @@ app.get("/api/index/hotStock", async (req, res) => {
 });
 
 // 股票筛选的数据
-app.get("/api/index/chooseTools", async (req, res) => {
+app.get("/api/screener/Tools", async (req, res) => {
   // 获取首页
   const httpUrl = `https://xueqiu.com/hq/screener`;
 
@@ -153,6 +153,38 @@ app.get("/api/index/chooseTools", async (req, res) => {
   // const content = result.data.match(reg);
   const content = reg.exec(result.data)[1];
   res.send(content);
+});
+
+// 本周新增
+app.get("/api/screener/stocks", (req, res) => {
+  const httpUrl = "https://xueqiu.com/service/screener/screen";
+
+  // follow （关注人数）   最热门
+  // follow7d (关注人数)   本周新增
+  // tweet （讨论条数）     最热门
+  // tweet7d （讨论条数）  本周新增
+  // deal 分享交易         最热门
+  // deal7d 分享交易      本周新增
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      category: "CN",
+      size: 10,
+      order: "desc",
+      order_by: "follow7d",
+      only_count: 0,
+      page: 1,
+      _: new Date().getTime,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 // 监听端口
