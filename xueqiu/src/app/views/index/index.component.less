@@ -1,3 +1,4 @@
+@import "../../../styles";
 .main {
   width: 960px;
   margin: 0 auto;
@@ -85,13 +86,13 @@
           width: 4px;
           height: 4px;
           border: 2px solid #ccc;
-          // background-color: blue;
+          // background-color:@activeFontColor;
           border-radius: 4px;
           margin: 0 5px;
         }
         .active {
-          background-color: blue;
-          border: 2px solid blue;
+          background-color: @activeFontColor;
+          border: 2px solid @activeFontColor;
         }
       }
     }
@@ -114,8 +115,8 @@
       // 选中加粗
       .tabActive {
         font-weight: 900;
-        color: #06c;
-        border-bottom: 3px solid #06c;
+        color: @activeFontColor;
+        border-bottom: 3px solid @activeFontColor;
       }
     }
   }

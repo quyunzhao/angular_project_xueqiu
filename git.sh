@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="tab7*24"
+msg="tab7*24 导入全局样式"
 
 if [ -n "${msg}" ]; then
     git pull
