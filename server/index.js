@@ -14,7 +14,7 @@ const port = 8080;
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Content-Type", "*");
-  console.log("Time: %d", Date.now());
+  console.log("Time: %d", Date.now(), "api:", req.url);
   next();
 });
 
