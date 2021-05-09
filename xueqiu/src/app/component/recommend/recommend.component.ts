@@ -5,6 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 // 导入服务
 import { NewService } from 'src/app/service/new.service';
 
+// 接口对应
+const tabObj = {
+  recommend: -1,
+  liveNews: 6,
+  hushen: 105,
+  kechaung: 115,
+};
+
 @Component({
   selector: 'app-recommend',
   templateUrl: './recommend.component.html',
@@ -16,11 +24,14 @@ export class RecommendComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      // console.log(params);
+      // tabObj[params.id];
+      // console.log(params.key);
+      console.log(tabObj[params.key]);
+
       const promise = this.server.getHotList();
       promise
         .then((result) => {
-          console.log(result.items);
+          // console.log(result.items);
           this.hostList = result.items;
         })
         .catch((err) => {

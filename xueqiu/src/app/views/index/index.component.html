@@ -56,10 +56,34 @@
   <!-- 右侧 -->
   <div class="mainRight">
     <div class="newsTab">
-      <div class="tabBtn" (click)="tabClick(0)">推荐</div>
-      <div class="tabBtn" (click)="tabClick(1)">7*24</div>
-      <div class="tabBtn" (click)="tabClick(2)">沪深</div>
-      <div class="tabBtn" (click)="tabClick(3)">科创</div>
+      <div
+        class="tabBtn"
+        (click)="tabClick(0)"
+        [class]="{ tabActive: tabActiveIndex === 0 }"
+      >
+        推荐
+      </div>
+      <div
+        class="tabBtn"
+        (click)="tabClick(1)"
+        [class]="{ tabActive: tabActiveIndex === 1 }"
+      >
+        7*24
+      </div>
+      <div
+        class="tabBtn"
+        (click)="tabClick(2)"
+        [class]="{ tabActive: tabActiveIndex === 2 }"
+      >
+        沪深
+      </div>
+      <div
+        class="tabBtn"
+        (click)="tabClick(3)"
+        [class]="{ tabActive: tabActiveIndex === 3 }"
+      >
+        科创
+      </div>
     </div>
     <router-outlet></router-outlet>
   </div>
