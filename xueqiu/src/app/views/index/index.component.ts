@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router, ActivatedRoute } from '@angular/router';
 // 导入
 import { base } from '../../api/baseApi';
 import axios from 'axios';
@@ -20,7 +21,7 @@ export class IndexComponent implements OnInit {
   // 默认选择第一个
   circleActive = 0;
 
-  constructor() {
+  constructor(public router: Router, public route: ActivatedRoute) {
     this.getData();
   }
 
@@ -40,5 +41,16 @@ export class IndexComponent implements OnInit {
     console.log(index);
     this.circleActive = index;
     this.zhishuListPosition = `translate(-${index * 640}px)`;
+  }
+
+  // tab
+  tabClick(index: number): void {
+    console.log(index);
+    const pathList = ['recommend', 'liveNews', 'hushen', 'kechaung'];
+    this.router.navigate(['index', pathList[index]], {
+      queryParams: {
+        key: pathList[index],
+      },
+    });
   }
 }

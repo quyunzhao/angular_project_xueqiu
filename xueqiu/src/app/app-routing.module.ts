@@ -7,6 +7,9 @@ import { ChooseComponent } from './views/choose/choose.component';
 import { NewstockComponent } from './views/newstock/newstock.component';
 import { NotfoundComponent } from './views/notfound/notfound.component';
 
+import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
+import { RecommendComponent } from './component/recommend/recommend.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -16,13 +19,31 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent,
+    children: [
+      {
+        path: 'recommend',
+        component: RecommendComponent,
+      },
+      {
+        path: 'liveNews',
+        component: DayinfoComponent,
+      },
+      {
+        path: 'hushen',
+        component: RecommendComponent,
+      },
+      {
+        path: 'kechaung',
+        component: RecommendComponent,
+      },
+    ],
   },
   {
     path: 'screener',
     component: ChooseComponent,
   },
   {
-    path: 'newstock',
+    path: 'newStock',
     component: NewstockComponent,
   },
 

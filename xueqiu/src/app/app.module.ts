@@ -7,6 +7,8 @@ import { IndexComponent } from './views/index/index.component';
 import { ChooseComponent } from './views/choose/choose.component';
 import { NewstockComponent } from './views/newstock/newstock.component';
 import { NotfoundComponent } from './views/notfound/notfound.component';
+import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
+import { RecommendComponent } from './component/recommend/recommend.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,12 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
     IndexComponent,
     ChooseComponent,
     NewstockComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    DayinfoComponent,
+    RecommendComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
