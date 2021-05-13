@@ -93,11 +93,64 @@ MongoClient.connect(url, function (err, db) {
   // });
 
   // 删除数据
-  var dbo = db.db(dbName);
-  var whereStr = { url: "/" }; // 查询条件
-  dbo.collection("api").deleteOne(whereStr, function (err, obj) {
-    if (err) throw err;
-    console.log("文档删除成功");
-    db.close();
-  });
+  // var dbo = db.db(dbName);
+  // var whereStr = { url: "/" }; // 查询条件
+  // dbo.collection("api").deleteOne(whereStr, function (err, obj) {
+  //   if (err) throw err;
+  //   console.log("文档删除成功");
+  //   db.close();
+  // });
+
+  // 删除多条数据 deleteMany()
+  // var dbo = db.db(dbName);
+  // var whereStr = { type: "0" }; // 查询条件
+  // dbo.collection("api").deleteMany(whereStr, function (err, obj) {
+  //   if (err) throw err;
+  //   console.log(obj.result.n + " 条文档被删除");
+  //   db.close();
+  // });
+
+  // 排序 使用 sort() 方法，该方法接受一个参数，规定是升序(1)还是降序(-1)
+  // { type: 1 }  // 按 type 字段升序
+  // { type: -1 } // 按 type 字段降序
+  // var dbo = db.db(dbName);
+  // var mysort = { url: 1 };
+  // dbo
+  //   .collection("api")
+  //   .find()
+  //   .sort(mysort)
+  //   .toArray(function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //     db.close();
+  //   });
+
+  // 查询分页  limit()
+  // 如果要指定跳过的条数，可以使用 skip() 方法。
+  // var dbo = db.db(dbName);
+  // var mysort = { url: 1 };
+  // dbo
+  //   .collection("api")
+  //   .find()
+  //   .sort(mysort)
+  //   .skip(2)
+  //   .limit(2)
+  //   .toArray(function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //     db.close();
+  //   });
+
+  // 连接操作
+  //
+
+  // 删除集合
+  // var dbo = db.db(dbName);
+  // // 删除 test 集合
+  // dbo.collection("test").drop(function (err, delOK) {
+  //   // 执行成功 delOK 返回 true，否则返回 false
+  //   if (err) throw err;
+  //   if (delOK) console.log("集合已删除");
+  //   db.close();
+  // });
 });
