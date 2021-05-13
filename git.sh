@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="股票筛选后台设置"
+msg="操作日志记录"
 
 if [ -n "${msg}" ]; then
     git pull

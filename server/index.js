@@ -4,6 +4,9 @@ const axios = require("axios");
 
 const app = express();
 
+// 导入操作日志模块
+const OperationLog = require("./src/operationLog");
+
 // 导入路径模块
 const path = require("path");
 
@@ -11,10 +14,17 @@ const path = require("path");
 const port = 8080;
 
 // 添加中间间
+// 添加请求头
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Content-Type", "*");
-  console.log("Time: %d", Date.now(), "api:", req.url);
+  next();
+});
+
+// 记录操作日志
+app.use((req, res, next) => {
+  // 写日志
+  OperationLog.writeOperationLog(Date.now(), req.url);
   next();
 });
 
