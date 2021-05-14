@@ -5,10 +5,10 @@ var MongoClient = require("mongodb").MongoClient;
 const env = require("./config");
 
 // 数据库名称
-const dbName = "xueqiu";
+const dbName = env.dbName;
 
 var url = env.url + ":" + env.port + "/" + dbName;
-console.log(url);
+// console.log(url);
 
 // 创建连接
 MongoClient.connect(url, function (err, db) {

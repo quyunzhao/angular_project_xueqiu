@@ -1,3 +1,6 @@
+// 导入操作数据库方法
+const CURD = require("./mongo/CURD_DB");
+
 // 操作日志记录
 const OperationLog = {
   // 获取日志
