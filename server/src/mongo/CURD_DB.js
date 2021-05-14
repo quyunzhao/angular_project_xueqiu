@@ -54,6 +54,19 @@ const CURD_DB = {
       conn.close();
     }
   },
+  findDB: async function (params) {
+    try {
+      conn = await MongoClient.connect(url);
+      const test = conn.db(dbName).collection(documentName);
+      // 查询
+      var arr = await test.find().toArray();
+      return arr;
+    } catch (error) {
+      console.log("错误：" + error);
+    } finally {
+      conn.close();
+    }
+  },
 };
 
 // dataOperate();

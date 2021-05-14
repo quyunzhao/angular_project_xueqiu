@@ -4,13 +4,25 @@ const CURD = require("./mongo/CURD_DB");
 // 操作日志记录
 const OperationLog = {
   // 获取日志
-  getOperationLog: function getLog(time, api) {
-    console.log(time, api);
+  getOperationLog: function getLog(params) {
+    const promise = CURD.findDB();
+    promise
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 
   // 写日志
   writeOperationLog: function writeLog(time, api) {
-    console.log(time, api);
+    // console.log(time, api);
+    var params = {
+      time: time,
+      api: api,
+    };
+    CURD.creatDB(params);
   },
 
   // 删日志

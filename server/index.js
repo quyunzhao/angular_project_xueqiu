@@ -25,6 +25,10 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // 写日志
   OperationLog.writeOperationLog(Date.now(), req.url);
+
+  // 查日志
+  // OperationLog.getOperationLog(Date.now());
+
   next();
 });
 
