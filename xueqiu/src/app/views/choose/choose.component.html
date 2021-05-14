@@ -22,18 +22,20 @@
       <div class="rangeItem">
         <span>行业：</span>
         <select name="rangeMarker">
-          <option value="sh_sz">全部A股</option>
-          <option value="sha">沪市A股</option>
-          <option value="sza">深市A股</option>
+          <option value="">全部</option>
+          <option [value]="item.encode" *ngFor="let item of industriesList">
+            {{ item.name }}
+          </option>
         </select>
       </div>
       <!-- 3 -->
       <div class="rangeItem">
         <span>地域板块：</span>
         <select name="rangeMarker">
-          <option value="sh_sz">全部A股</option>
-          <option value="sha">沪市A股</option>
-          <option value="sza">深市A股</option>
+          <option value="">全部</option>
+          <option [value]="item" *ngFor="let item of areaList">
+            {{ areas[item] }}
+          </option>
         </select>
       </div>
     </div>
