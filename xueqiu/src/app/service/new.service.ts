@@ -33,4 +33,28 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 获取行业
+  async getIndustries(): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/industries';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
+
+  // 获取地区
+  async getArea(): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/area';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }

@@ -203,6 +203,49 @@ app.get("/api/screener/stocks", (req, res) => {
     });
 });
 
+// 获取行业信息
+app.get("/api/screener/industries", async (req, res) => {
+  // 获取首页
+  const httpUrl = `https://xueqiu.com/service/screener/industries`;
+  const time = new Date().getTime;
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      category: "CN",
+      _: time,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+// 获取区域信息
+app.get("/api/screener/area", async (req, res) => {
+  // 获取首页
+  const httpUrl = `https://xueqiu.com/service/screener/areas`;
+  const time = new Date().getTime;
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      _: time,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");
