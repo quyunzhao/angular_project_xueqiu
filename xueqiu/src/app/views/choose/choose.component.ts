@@ -12,9 +12,18 @@ export class ChooseComponent implements OnInit {
   // 地区
   areaList = [];
   areas = {};
+
+  // 工具
+  tools = {};
+
+  // 股票筛选
+  stock = {};
+
   constructor(public server: NewService) {
     this.getIndustriesData();
     this.getAreaData();
+    this.getTools();
+    this.getCstock();
   }
 
   ngOnInit(): void {}
@@ -22,17 +31,32 @@ export class ChooseComponent implements OnInit {
   // 获取行业数据
   async getIndustriesData(): Promise<void> {
     const result = await this.server.getIndustries();
-    // console.log(result.data);
     this.industriesList = result.data.industries;
-    // console.log(this.industriesList);
   }
 
   // 获取区域数据
   async getAreaData(): Promise<void> {
     const result = await this.server.getArea();
     this.areas = result.data.areas;
-    console.log(Object.keys(this.areas));
     this.areaList = Object.keys(this.areas);
-    // console.log(this.areaList);
+  }
+
+  // 获取工具
+  async getTools(): Promise<void> {
+    const result = await this.server.getTools();
+    this.tools = result;
+  }
+
+  // 获取股票筛选
+  async getCstock(): Promise<void> {
+    const options = {
+      params: {
+        order: 'desc',
+        order_by: 'follow',
+        page: 1,
+      },
+    };
+    const result = await this.server.getcstock(options);
+    this.stock = result.data;
   }
 }

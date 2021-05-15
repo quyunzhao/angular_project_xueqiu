@@ -174,6 +174,7 @@ app.get("/api/screener/stocks", (req, res) => {
   const httpUrl = "https://xueqiu.com/service/screener/screen";
 
   const orderBy = req.query.order_by || "follow7d";
+  const order = req.query.order || "desc";
   const time = new Date().getTime;
   // follow （关注人数）   最热门
   // follow7d (关注人数)   本周新增
@@ -187,7 +188,7 @@ app.get("/api/screener/stocks", (req, res) => {
     params: {
       category: "CN",
       size: 10,
-      order: "desc",
+      order: order,
       order_by: orderBy,
       only_count: 0,
       page: 1,

@@ -57,4 +57,28 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 条件股票
+  async getcstock(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/stocks';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl, { params: options.params });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
+
+  // 获取筛选工具
+  async getTools(): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/Tools';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }
