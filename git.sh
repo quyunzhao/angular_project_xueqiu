@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="股票筛选工具生成"
+msg="股票筛选功能完结"
 
 if [ -n "${msg}" ]; then
     git pull
