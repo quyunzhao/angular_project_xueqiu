@@ -75,4 +75,13 @@ export class ChooseComponent implements OnInit {
     this.currentTab = tab;
     this.currentTabActive = index;
   }
+
+  // 点击事件
+  async checkField(field): Promise<void> {
+    const options = {
+      params: field,
+    };
+    const result = await this.server.getFieldRange(options);
+    console.log(result.data);
+  }
 }

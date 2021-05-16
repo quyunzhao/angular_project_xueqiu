@@ -247,6 +247,31 @@ app.get("/api/screener/area", async (req, res) => {
     });
 });
 
+// 获取最大最小值
+app.get("/api/screener/fieldRange", async (req, res) => {
+  // 获取首页
+  const httpUrl = `https://xueqiu.com/service/screener/values`;
+  const time = new Date().getTime;
+  const date = "20210331";
+  const field = req.query.field || "npana";
+
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      _: time,
+      category: "CN",
+      field: field + "." + date,
+    },
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");

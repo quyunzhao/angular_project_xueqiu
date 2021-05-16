@@ -70,8 +70,13 @@
                   let i = index
                 "
               >
-                <input type="checkbox" [value]="item.field" [id]="item.adj" />
-                <label [for]="item.adj">{{ item.name }}</label>
+                <input
+                  type="checkbox"
+                  [value]="item.field"
+                  [id]="item.field"
+                  [name]="item.field"
+                />
+                <label [for]="item.field">{{ item.name }}</label>
               </div>
             </div>
             <!--  -->
@@ -84,8 +89,13 @@
                   let i = index
                 "
               >
-                <input type="checkbox" [value]="item.field" [id]="item.adj" />
-                <label [for]="item.adj">{{ item.name }}</label>
+                <input
+                  type="checkbox"
+                  [value]="item.field"
+                  [id]="item.field"
+                  [name]="item.field"
+                />
+                <label [for]="item.field">{{ item.name }}</label>
               </div>
             </div>
 
@@ -99,8 +109,13 @@
                   let i = index
                 "
               >
-                <input type="checkbox" [value]="item.field" [id]="item.adj" />
-                <label [for]="item.adj">{{ item.name }}</label>
+                <input
+                  type="checkbox"
+                  [value]="item.field"
+                  [id]="item.field"
+                  [name]="item.field"
+                />
+                <label [for]="item.field">{{ item.name }}</label>
               </div>
             </div>
 
@@ -114,16 +129,26 @@
                   let i = index
                 "
               >
-                <input type="checkbox" [value]="item.field" [id]="item.adj" />
-                <label [for]="item.adj">{{ item.name }}</label>
+                <input
+                  type="checkbox"
+                  [value]="item.field"
+                  [id]="item.field"
+                  [name]="item.field"
+                />
+                <label [for]="item.field">{{ item.name }}</label>
               </div>
             </div>
           </div>
         </div>
         <div *ngIf="currentTab !== '财务报表'" class="tabContent">
           <div class="checkItem" *ngFor="let item of tabObj[currentTab]">
-            <input type="checkbox" [value]="item.field" [id]="item.adj" />
-            <label [for]="item.adj">{{ item.name }}</label>
+            <input
+              type="checkbox"
+              [value]="item.field"
+              [id]="item.field"
+              [name]="item.field"
+            />
+            <label [for]="item.field">{{ item.name }}</label>
           </div>
         </div>
       </div>

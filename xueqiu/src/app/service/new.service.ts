@@ -81,4 +81,16 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 获取字段范围
+  async getFieldRange(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/fieldRange';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl, { params: options.params });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }
