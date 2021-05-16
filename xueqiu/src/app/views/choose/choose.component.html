@@ -65,6 +65,7 @@
             <div class="contentItem">
               <div
                 class="checkItem"
+                (change)="checkField(item.field)"
                 *ngFor="
                   let item of tabObj[currentTab][0]['利润表'];
                   let i = index
@@ -84,6 +85,7 @@
             <div class="contentItem">
               <div
                 class="checkItem"
+                (change)="checkField(item.field)"
                 *ngFor="
                   let item of tabObj[currentTab][1]['每股数据'];
                   let i = index
@@ -104,6 +106,7 @@
             <div class="contentItem">
               <div
                 class="checkItem"
+                (change)="checkField(item.field)"
                 *ngFor="
                   let item of tabObj[currentTab][2]['资产负债表'];
                   let i = index
@@ -124,6 +127,7 @@
             <div class="contentItem">
               <div
                 class="checkItem"
+                (change)="checkField(item.field)"
                 *ngFor="
                   let item of tabObj[currentTab][3]['现金流量表'];
                   let i = index
@@ -141,7 +145,11 @@
           </div>
         </div>
         <div *ngIf="currentTab !== '财务报表'" class="tabContent">
-          <div class="checkItem" *ngFor="let item of tabObj[currentTab]">
+          <div
+            class="checkItem"
+            *ngFor="let item of tabObj[currentTab]"
+            (change)="checkField(item.field)"
+          >
             <input
               type="checkbox"
               [value]="item.field"
