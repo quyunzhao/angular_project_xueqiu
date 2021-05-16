@@ -88,6 +88,21 @@ export class ChooseComponent implements OnInit {
     // console.log(result.data);
     item.min = result.data.min;
     item.max = result.data.max;
-    this.stockSelectedList.push(item);
+    this.updateStockList(item);
+  }
+
+  // 更新筛选列表
+  updateStockList(item): void {
+    let isContinue = true;
+    this.stockSelectedList.forEach((element, index) => {
+      if (element.field === item.field && isContinue) {
+        console.log('存在');
+        this.stockSelectedList.splice(index, 1);
+        isContinue = false;
+      }
+    });
+    if (isContinue) {
+      this.stockSelectedList.push(item);
+    }
   }
 }
