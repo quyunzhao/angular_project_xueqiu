@@ -49,7 +49,8 @@
         <div
           class="tabItem"
           *ngFor="let item of tabList; let i = index"
-          (click)="toggleTabs(item)"
+          [class]="{ tabActive: currentTabActive === i }"
+          (click)="toggleTabs(item, i)"
         >
           <span>{{ item }}</span>
         </div>
@@ -57,54 +58,69 @@
 
       <!-- 内容 -->
       <div class="toolsContent">
-        <div *ngIf="currentTab === '财务报表'">
-          <!--  -->
-          <h5>利润表</h5>
-          <div
-            class="contentItem"
-            *ngFor="let item of tabObj[currentTab][0]['利润表']; let i = index"
-          >
-            <input type="checkbox" [value]="item.field" [id]="item.adj" />
-            <label [for]="item.adj">{{ item.name }}</label>
-          </div>
-          <!--  -->
-          <h5>每股数据</h5>
-          <div
-            class="contentItem"
-            *ngFor="
-              let item of tabObj[currentTab][1]['每股数据'];
-              let i = index
-            "
-          >
-            <input type="checkbox" [value]="item.field" [id]="item.adj" />
-            <label [for]="item.adj">{{ item.name }}</label>
-          </div>
-          <!--  -->
-          <h5>资产负债表</h5>
-          <div
-            class="contentItem"
-            *ngFor="
-              let item of tabObj[currentTab][2]['资产负债表'];
-              let i = index
-            "
-          >
-            <input type="checkbox" [value]="item.field" [id]="item.adj" />
-            <label [for]="item.adj">{{ item.name }}</label>
-          </div>
-          <!--  -->
-          <h5>现金流量表</h5>
-          <div
-            class="contentItem"
-            *ngFor="
-              let item of tabObj[currentTab][3]['现金流量表'];
-              let i = index
-            "
-          >
-            <input type="checkbox" [value]="item.field" [id]="item.adj" />
-            <label [for]="item.adj">{{ item.name }}</label>
+        <div *ngIf="currentTab === '财务报表'" class="tabContent">
+          <div class="updown">
+            <!--  -->
+            <h5>利润表</h5>
+            <div class="contentItem">
+              <div
+                class="checkItem"
+                *ngFor="
+                  let item of tabObj[currentTab][0]['利润表'];
+                  let i = index
+                "
+              >
+                <input type="checkbox" [value]="item.field" [id]="item.adj" />
+                <label [for]="item.adj">{{ item.name }}</label>
+              </div>
+            </div>
+            <!--  -->
+            <h5>每股数据</h5>
+            <div class="contentItem">
+              <div
+                class="checkItem"
+                *ngFor="
+                  let item of tabObj[currentTab][1]['每股数据'];
+                  let i = index
+                "
+              >
+                <input type="checkbox" [value]="item.field" [id]="item.adj" />
+                <label [for]="item.adj">{{ item.name }}</label>
+              </div>
+            </div>
+
+            <!--  -->
+            <h5>资产负债表</h5>
+            <div class="contentItem">
+              <div
+                class="checkItem"
+                *ngFor="
+                  let item of tabObj[currentTab][2]['资产负债表'];
+                  let i = index
+                "
+              >
+                <input type="checkbox" [value]="item.field" [id]="item.adj" />
+                <label [for]="item.adj">{{ item.name }}</label>
+              </div>
+            </div>
+
+            <!--  -->
+            <h5>现金流量表</h5>
+            <div class="contentItem">
+              <div
+                class="checkItem"
+                *ngFor="
+                  let item of tabObj[currentTab][3]['现金流量表'];
+                  let i = index
+                "
+              >
+                <input type="checkbox" [value]="item.field" [id]="item.adj" />
+                <label [for]="item.adj">{{ item.name }}</label>
+              </div>
+            </div>
           </div>
         </div>
-        <div *ngIf="currentTab !== '财务报表'">
+        <div *ngIf="currentTab !== '财务报表'" class="tabContent">
           <div class="checkItem" *ngFor="let item of tabObj[currentTab]">
             <input type="checkbox" [value]="item.field" [id]="item.adj" />
             <label [for]="item.adj">{{ item.name }}</label>

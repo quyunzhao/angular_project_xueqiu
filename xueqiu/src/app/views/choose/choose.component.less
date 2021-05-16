@@ -19,5 +19,53 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    // 工具
+    .tools {
+      display: flex;
+
+      .toolsTabs {
+        width: 100px;
+        border-right: 1px solid #ccc;
+        padding: 20px 0;
+
+        .tabItem {
+          height: 38px;
+          line-height: 38px;
+          text-align: center;
+          transform: translate(1px, 0);
+        }
+
+        .tabActive {
+          border: 1px solid #ccc;
+          border-right: 1px solid #fff;
+        }
+      }
+      .toolsContent {
+        flex: 1;
+
+        .tabContent {
+          display: flex;
+          flex-wrap: wrap;
+
+          .checkItem {
+            width: 33.33%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .updown {
+            display: flex;
+            flex-direction: column;
+
+            .contentItem {
+              display: flex;
+              flex-wrap: wrap;
+            }
+          }
+        }
+      }
+    }
   }
 }

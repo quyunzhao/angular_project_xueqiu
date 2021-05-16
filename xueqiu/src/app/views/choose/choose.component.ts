@@ -24,6 +24,7 @@ export class ChooseComponent implements OnInit {
   tabObj = { 基本指标: [] };
   // 当前选中项
   currentTab = '基本指标';
+  currentTabActive = 0;
 
   constructor(public server: NewService) {
     this.getIndustriesData();
@@ -51,7 +52,7 @@ export class ChooseComponent implements OnInit {
   async getTools(): Promise<void> {
     const result = await this.server.getTools();
     this.tabObj = result;
-    console.log(this.tabObj);
+    // console.log(this.tabObj);
     this.tools = this.tabObj;
     this.tabList = Object.keys(this.tabObj);
   }
@@ -70,7 +71,8 @@ export class ChooseComponent implements OnInit {
   }
 
   // 点击切换TAb
-  toggleTabs(item): void {
-    this.currentTab = item;
+  toggleTabs(tab, index): void {
+    this.currentTab = tab;
+    this.currentTabActive = index;
   }
 }
