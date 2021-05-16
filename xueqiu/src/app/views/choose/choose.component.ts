@@ -26,6 +26,9 @@ export class ChooseComponent implements OnInit {
   currentTab = '基本指标';
   currentTabActive = 0;
 
+  // 筛选列表
+  stockSelectedList = [];
+
   constructor(public server: NewService) {
     this.getIndustriesData();
     this.getAreaData();
@@ -77,9 +80,9 @@ export class ChooseComponent implements OnInit {
   }
 
   // 点击事件
-  async checkField(field): Promise<void> {
+  async checkField(item): Promise<void> {
     const options = {
-      params: field,
+      params: item.field,
     };
     const result = await this.server.getFieldRange(options);
     console.log(result.data);
