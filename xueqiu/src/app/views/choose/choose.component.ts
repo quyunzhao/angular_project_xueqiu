@@ -85,6 +85,9 @@ export class ChooseComponent implements OnInit {
       params: item.field,
     };
     const result = await this.server.getFieldRange(options);
-    console.log(result.data);
+    // console.log(result.data);
+    item.min = result.data.min;
+    item.max = result.data.max;
+    this.stockSelectedList.push(item);
   }
 }

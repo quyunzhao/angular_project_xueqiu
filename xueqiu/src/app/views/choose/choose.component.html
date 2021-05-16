@@ -184,10 +184,13 @@
         <span class="headerItem">删除</span>
       </div>
       <!-- 筛选列表 -->
-      <div
-        class="SelectedListContent"
-        *ngFor="let item of stockSelectedList"
-      ></div>
+      <div class="SelectedListContent" *ngFor="let item of stockSelectedList">
+        <span class="stockContentItem"> {{ item.name }}</span>
+        <span class="stockContentItem"> {{ item.min }}</span>
+        <span class="stockContentItem"> </span>
+        <span class="stockContentItem"> {{ item.min }}</span>
+        <span class="stockContentItem">删除</span>
+      </div>
     </div>
     <!-- 筛选条件end -->
   </div>
