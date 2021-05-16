@@ -19,6 +19,12 @@ export class ChooseComponent implements OnInit {
   // 股票筛选
   stock = {};
 
+  // tab列表
+  tabList = [];
+  tabObj = { 基本指标: [] };
+  // 当前选中项
+  currentTab = '基本指标';
+
   constructor(public server: NewService) {
     this.getIndustriesData();
     this.getAreaData();
@@ -44,7 +50,10 @@ export class ChooseComponent implements OnInit {
   // 获取工具
   async getTools(): Promise<void> {
     const result = await this.server.getTools();
-    this.tools = result;
+    this.tabObj = result;
+    console.log(this.tabObj);
+    this.tools = this.tabObj;
+    this.tabList = Object.keys(this.tabObj);
   }
 
   // 获取股票筛选
@@ -58,5 +67,10 @@ export class ChooseComponent implements OnInit {
     };
     const result = await this.server.getcstock(options);
     this.stock = result.data;
+  }
+
+  // 点击切换TAb
+  toggleTabs(item): void {
+    this.currentTab = item;
   }
 }
