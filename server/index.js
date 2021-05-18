@@ -7,11 +7,17 @@ const app = express();
 // 导入操作日志模块
 const OperationLog = require("./src/operationLog");
 
+// 读取本地数据
+const readFile = require("./src/readFixtures");
+
 // 导入路径模块
 const path = require("path");
 
 // 监听端口
 const port = 8080;
+
+// axios全局设置网络超时
+axios.defaults.timeout = 30 * 1000; // 30s
 
 // 添加中间间
 // 添加请求头
@@ -20,6 +26,29 @@ app.use((req, res, next) => {
   res.append("Access-Control-Allow-Content-Type", "*");
   next();
 });
+
+// 判断接口是否请求成功
+// 成功用原数据
+// 失败采用本地数据
+axios.interceptors.response.use(
+  (response) => {
+    // console.log("成功", response.status);
+    // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
+    // 否则的话抛出错误
+    if (response.status === 200) {
+      return Promise.resolve(response);
+    } else {
+      return Promise.reject(response);
+    }
+  },
+  (error) => {
+    const reqURL = error.config.url;
+    console.log(reqURL);
+    var result = readFile.readAsync(reqURL);
+
+    return Promise.reject(result);
+  }
+);
 
 // 记录操作日志
 app.use((req, res, next) => {
@@ -75,10 +104,15 @@ app.get("/fixtures/quote", (req, res) => {
 /* ----------------后台数据 --------*/
 // 指数数据
 app.get("/api/index/quote", (req, res) => {
-  const httpUrl =
-    "https://stock.xueqiu.com/v5/stock/batch/quote.json?symbol=SH000001,SZ399001,SZ399006,SH000688,HKHSI,HKHSCEI,HKHSCCI,.DJI,.IXIC,.INX";
+  const httpUrl = "https://stock.xueqiu.com/v5/stock/batch/quote.json";
 
-  const promise = axios.get(httpUrl, options);
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: {
+      symbol:
+        "SH000001,SZ399001,SZ399006,SH000688,HKHSI,HKHSCEI,HKHSCCI,.DJI,.IXIC,.INX",
+    },
+  });
   promise
     .then((result) => {
       // console.log(result);
