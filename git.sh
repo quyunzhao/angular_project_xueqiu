@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="添加桩数据"
+msg="股票筛选功能完结"
 
 if [ -n "${msg}" ]; then
     git pull
