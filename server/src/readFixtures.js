@@ -11,7 +11,7 @@ const readFile = {
     // 异步读取
     fs.readFile(fixtures + filename, function (err, data) {
       if (err) {
-        return console.error(err);
+        return err;
       }
       return data;
     });
@@ -25,8 +25,12 @@ const readFile = {
   api2Pathname: function (api) {
     const arr = api.split("/");
     // api最后一项为文件名称
-    const arrLast = arr[arr.length - 1];
-    const filename = arrLast;
+    let arrLast = arr[arr.length - 1];
+    var reg = /.json$/;
+
+    arrLast = arrLast.replace(reg, "");
+
+    const filename = arrLast + ".json";
     return filename;
   },
 };

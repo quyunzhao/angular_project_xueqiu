@@ -45,7 +45,7 @@ axios.interceptors.response.use(
     const reqURL = error.config.url;
     console.log(reqURL);
     var result = readFile.readAsync(reqURL);
-
+    console.log(result);
     return Promise.reject(result);
   }
 );
@@ -174,11 +174,18 @@ app.get("/api/index/hotStock", async (req, res) => {
    **/
 
   const index = req.query.index || 12;
-  const httpUrl = `https://stock.xueqiu.com/v5/stock/hot_stock/list.json?size=8&_type=${index}&type=${index}`;
+  const httpUrl = `https://stock.xueqiu.com/v5/stock/hot_stock/list.json`;
 
   let result;
   try {
-    result = await axios.get(httpUrl, options);
+    result = await axios.get(httpUrl, {
+      ...options,
+      params: {
+        size: 8,
+        _type: index,
+        type: index,
+      },
+    });
   } catch (error) {
     res.send(err);
   }
@@ -194,7 +201,7 @@ app.get("/api/screener/Tools", async (req, res) => {
   try {
     result = await axios.get(httpUrl, options);
   } catch (error) {
-    res.send(err);
+    res.send(error);
   }
   // 设置正则
   let reg = /SNB.data.condition =(.*?);/gis;
