@@ -1,0 +1,110 @@
+{
+  "基本指标": [
+    { "name": "市盈率TTM", "field": "pettm", "adj": 0 },
+    { "name": "净资产收益率", "field": "roediluted", "adj": 1 },
+    { "name": "每股净资产", "field": "bps", "adj": 1 },
+    { "name": "市盈率LYR", "field": "pelyr", "adj": 0 },
+    { "name": "净利润同比增长", "field": "npay", "adj": 1 },
+    { "name": "每股收益", "field": "eps", "adj": 1 },
+    { "name": "净利润", "field": "netprofit", "adj": 1 },
+    { "name": "股息收益率", "field": "dy_l", "adj": 0 },
+    { "name": "市销率(倍)", "field": "psr", "adj": 0 },
+    { "name": "市净率MRQ", "field": "pb", "adj": 0 },
+    { "name": "营业收入", "field": "total_revenue", "adj": 1 },
+    { "name": "总市值", "field": "mc", "adj": 0 },
+    { "name": "流通市值", "field": "fmc", "adj": 0 },
+    { "name": "总资产报酬率", "field": "niota", "adj": 1 },
+    { "name": "营业收入同比增长", "field": "oiy", "adj": 1 }
+  ],
+  "雪球指标": [
+    { "name": "累计交易分享数", "field": "deal", "adj": 0 },
+    { "name": "一周新增关注", "field": "follow7d", "adj": 0 },
+    { "name": "一周交易分享增长率", "field": "deal7dpct", "adj": 0 },
+    { "name": "一周新增交易分享数", "field": "deal7d", "adj": 0 },
+    { "name": "一周讨论增长率", "field": "tweet7dpct", "adj": 0 },
+    { "name": "累计讨论次数", "field": "tweet", "adj": 0 },
+    { "name": "一周关注增长率", "field": "follow7dpct", "adj": 0 },
+    { "name": "累计关注人数", "field": "follow", "adj": 0 },
+    { "name": "一周新增讨论数", "field": "tweet7d", "adj": 0 }
+  ],
+  "行情指标": [
+    { "name": "当日涨跌幅", "field": "pct", "adj": 0 },
+    { "name": "近5日涨跌幅", "field": "pct5", "adj": 0 },
+    { "name": "近60日涨跌幅", "field": "pct60", "adj": 0 },
+    { "name": "当日成交额", "field": "amount", "adj": 0 },
+    { "name": "当日振幅", "field": "chgpct", "adj": 0 },
+    { "name": "近20日涨跌幅", "field": "pct20", "adj": 0 },
+    { "name": "近120日涨跌幅", "field": "pct120", "adj": 0 },
+    { "name": "近250日涨跌幅", "field": "pct250", "adj": 0 },
+    { "name": "本日成交量", "field": "volume", "adj": 0 },
+    { "name": "当前价", "field": "current", "adj": 0 },
+    { "name": "当日量比", "field": "volume_ratio", "adj": 0 },
+    { "name": "年初至今涨跌幅", "field": "pct_current_year", "adj": 0 },
+    { "name": "近10日涨跌幅", "field": "pct10", "adj": 0 },
+    { "name": "当日换手率", "field": "tr", "adj": 0 }
+  ],
+  "财务报表": [
+    {
+      "利润表": [
+        { "name": "扣非净利润", "field": "npana", "adj": 1 },
+        { "name": "营业成本", "field": "bc", "adj": 1 },
+        { "name": "归属于母公司所有者的净利润", "field": "np", "adj": 1 },
+        { "name": "净利润", "field": "npt", "adj": 1 },
+        { "name": "营业总成本", "field": "tbc", "adj": 1 },
+        { "name": "营业收入", "field": "bi", "adj": 1 },
+        {
+          "name": "少数股东损益归属于母公司所有者的净利润",
+          "field": "mg",
+          "adj": 1
+        },
+        { "name": "营业总收入", "field": "tbi", "adj": 1 },
+        { "name": "利润总额", "field": "tp", "adj": 1 },
+        { "name": "营业利润", "field": "bp", "adj": 1 }
+      ]
+    },
+    {
+      "每股数据": [
+        { "name": "每股净资产", "field": "psf", "adj": 1 },
+        { "name": "每股经营现金流", "field": "ocps", "adj": 1 },
+        { "name": "每股未分配利润", "field": "upps", "adj": 1 },
+        { "name": "扣除非经常性损益后的每股收益", "field": "beps", "adj": 1 },
+        { "name": "每股收益", "field": "epsdiluted", "adj": 1 },
+        { "name": "稀释每股收益", "field": "epsweighted", "adj": 1 },
+        { "name": "每股资本公积金", "field": "csps", "adj": 1 }
+      ]
+    },
+    {
+      "资产负债表": [
+        { "name": "预收款项", "field": "prec", "adj": 1 },
+        { "name": "货币资金", "field": "cur", "adj": 1 },
+        { "name": "流动负债", "field": "cl", "adj": 1 },
+        { "name": "非流动资产", "field": "nca", "adj": 1 },
+        { "name": "资产合计", "field": "ta", "adj": 1 },
+        { "name": "应付账款", "field": "pay", "adj": 1 },
+        { "name": "资本公积", "field": "csps", "adj": 1 },
+        { "name": "存货", "field": "inv", "adj": 1 },
+        { "name": "归属于母公司股东权益", "field": "eq", "adj": 1 },
+        { "name": "应收账款", "field": "rec", "adj": 1 },
+        { "name": "长期投资", "field": "li", "adj": 1 },
+        { "name": "非流动负债", "field": "ncl", "adj": 1 },
+        { "name": "少数股东权益", "field": "me", "adj": 1 },
+        { "name": "负债合计", "field": "tl", "adj": 1 },
+        { "name": "无形资产", "field": "ia", "adj": 1 },
+        { "name": "股东权益合计", "field": "the", "adj": 1 },
+        { "name": "固定资产", "field": "fa", "adj": 1 },
+        { "name": "未分配利润", "field": "up", "adj": 1 },
+        { "name": "流动资产", "field": "ca", "adj": 1 },
+        { "name": "商誉", "field": "goodwill", "adj": 0 }
+      ]
+    },
+    {
+      "现金流量表": [
+        { "name": "经营活动产生的现金流量净额", "field": "bncf", "adj": 1 },
+        { "name": "期末现金及现金等价物余额", "field": "fcb", "adj": 1 },
+        { "name": "现金及现金等价物净增加额", "field": "cnr", "adj": 1 },
+        { "name": "投资活动产生的现金流量净额", "field": "incf", "adj": 1 },
+        { "name": "筹资活动产生的现金流量净额", "field": "fncf", "adj": 1 }
+      ]
+    }
+  ]
+}

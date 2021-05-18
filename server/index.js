@@ -34,6 +34,8 @@ app.use((req, res, next) => {
 
 // 打桩文件路径
 const fixtures = path.resolve("fixtures") + "\\";
+const cookie =
+  "device_id=24700f9f1986800ab4fcc880530dd0ed; s=e011hbwphk; acw_tc=2760820216213379066238706e80397a9a911c0f74053e789cddfd80ae55e9; xq_a_token=385b836a045da45667afda72237fc969313f56f0; xqat=385b836a045da45667afda72237fc969313f56f0; xq_r_token=f04bf9be3f04ead615a88752d56293c4ae5eec0b; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyMzgxMTc5NywiY3RtIjoxNjIxMzM3ODg3MjY3LCJjaWQiOiJkOWQwbjRBWnVwIn0.T1dWX4MCuHnrcQFkElE_yzqZJLd0jLhWLVjrP5msVBixd4Biak6IWtdGPr8ALN7T4jcwXGbBN3HFV0bcawnOwqoADH9llCaS1i_5SCQMK6GynosdkmWxCKBWEa4b97zsY_ajcg4-hlPeJ2MRUFT4GnsqlPHKLPoQf06CGeGkcNuArSpJcS4wNoho6e3jNnE4QvD30buxJrIQeAnQ64gST5AFQ3QLb-1t6yws1KS3v5xu5siLq2q46OcZV8WMeWJj7DPQ50DmjyAy4qcmAJTCYWtlGYNPOvUyw3LOv53hJizCohjFsC25At9gVjfTm8-m9CgArQmIWaqFd3bTuM7KYg; u=291621337906636; Hm_lvt_1db88642e346389874251b5a1eded6e3=1620219739,1621337955; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1621337955";
 
 const options = {
   // `headers` 是即将被发送的自定义请求头
@@ -45,8 +47,7 @@ const options = {
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-site",
-    cookie:
-      "xq_a_token=4b4d3f5b97e67b975f4e1518dc4c417ebf0ad4c4; xqat=4b4d3f5b97e67b975f4e1518dc4c417ebf0ad4c4; xq_r_token=960e1d453ab676f85fa80d2d41b80edebfde8cc0; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyMjUxNTc5MiwiY3RtIjoxNjIwMjE5NzMzMzI0LCJjaWQiOiJkOWQwbjRBWnVwIn0.hVKTsEQRJ6GXlliby8uVsbTFLXJFzjMtL8mWu1g4cQOrj4oFMUWSo_CTole1W8GJuBcMUf63zg4vi4QAKMFXWSA0e9tQwvcMG1Ru9y2JHY09tiRaHPf6Wm5ZUOlmonVjpWSdVjDyTS9oHxJptVbg_7nzti5-BYKHuU5RDEy_Wj20UIAbPZo_JqwqL1QNsaPmCae8OCMPRXVqtx6saMWpK81QSPkAvbbbWFRnv8h2SRKqTjgegBUz62K7sqVZyXSDb2e9rdB6H6BgXVx4jjNJ-JKTX7omfPZw5F2tGHwDRygoAw_LfT6kEQz2x1AqIC3npGGrNMtj1TKG2J3QgniC6w; u=181620219737402; Hm_lvt_1db88642e346389874251b5a1eded6e3=1620219739; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1620219739; device_id=24700f9f1986800ab4fcc880530dd0ed",
+    cookie: cookie,
   },
 };
 

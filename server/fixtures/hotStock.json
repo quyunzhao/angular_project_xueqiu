@@ -1,0 +1,88 @@
+{
+  "data": {
+    "items": [
+      {
+        "type": 12,
+        "code": "SH601127",
+        "name": "小康股份",
+        "value": 7105,
+        "increment": 15,
+        "percent": 10,
+        "current": 66.54,
+        "chg": 6.05
+      },
+      {
+        "type": 12,
+        "code": "SH601919",
+        "name": "中远海控",
+        "value": 5655,
+        "increment": 30,
+        "percent": 4.95,
+        "current": 22.03,
+        "chg": 1.04
+      },
+      {
+        "type": 12,
+        "code": "SH600196",
+        "name": "复星医药",
+        "value": 4635,
+        "increment": -140,
+        "percent": -8.33,
+        "current": 63.9,
+        "chg": -5.81
+      },
+      {
+        "type": 12,
+        "code": "SH600085",
+        "name": "同仁堂",
+        "value": 4046,
+        "increment": -22,
+        "percent": 9.26,
+        "current": 36.1,
+        "chg": 3.06
+      },
+      {
+        "type": 12,
+        "code": "SH601857",
+        "name": "中国石油",
+        "value": 3684,
+        "increment": 18,
+        "percent": 4.51,
+        "current": 4.87,
+        "chg": 0.21
+      },
+      {
+        "type": 12,
+        "code": "SH600733",
+        "name": "北汽蓝谷",
+        "value": 3211,
+        "increment": 10,
+        "percent": 6.54,
+        "current": 18.4,
+        "chg": 1.13
+      },
+      {
+        "type": 12,
+        "code": "SH605089",
+        "name": "味知香",
+        "value": 2630,
+        "increment": -63,
+        "percent": 10,
+        "current": 128.96,
+        "chg": 11.72
+      },
+      {
+        "type": 12,
+        "code": "SZ002352",
+        "name": "顺丰控股",
+        "value": 2304,
+        "increment": -59,
+        "percent": 5.67,
+        "current": 68.9,
+        "chg": 3.7
+      }
+    ]
+  },
+  "error_code": 0,
+  "error_description": ""
+}
