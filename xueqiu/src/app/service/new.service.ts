@@ -93,4 +93,16 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 获取筛选的股票
+  async getxsStock(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/screener/sxStock';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl, { params: options.params });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }

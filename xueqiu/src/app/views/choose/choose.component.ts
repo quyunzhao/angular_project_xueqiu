@@ -29,6 +29,16 @@ export class ChooseComponent implements OnInit {
   // 筛选列表
   stockSelectedList = [];
 
+  // 过滤参数
+  category = 'CN';
+  exchange = 'sh_sz';
+  areacode = '';
+  indcode = '';
+
+  // 过滤条件之后的列表
+  sxStocksList = [];
+  sxStocksLength = 0;
+
   constructor(public server: NewService) {
     this.getIndustriesData();
     this.getAreaData();
@@ -105,5 +115,45 @@ export class ChooseComponent implements OnInit {
     if (isContinue) {
       this.stockSelectedList.push(item);
     }
+  }
+
+  // 开始选股
+  getStock(): void {
+    const fileObj = {};
+    this.stockSelectedList.forEach((item, index) => {
+      if (parseFloat(item.Cmax) > parseFloat(item.Cmin)) {
+        fileObj[item.field] = item.Cmin + '_' + item.Cmax;
+      } else {
+        fileObj[item.field] = item.Cmax + '_' + item.Cmin;
+      }
+    });
+
+    const time = new Date().getTime;
+    const options = {
+      params: {
+        category: this.category,
+        exchange: this.exchange,
+        areacode: this.areacode,
+        indcode: this.indcode,
+        order_by: 'symbol',
+        order: 'desc',
+        page: 1,
+        size: 30,
+        only_count: 0,
+        current: '',
+        pct: '',
+        ...fileObj,
+        _: time,
+      },
+    };
+    const promise = this.server.getxsStock(options);
+    promise
+      .then((result) => {
+        this.sxStocksLength = result.data.count;
+        this.sxStocksList = result.data.list;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

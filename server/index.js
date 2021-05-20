@@ -320,6 +320,23 @@ app.get("/api/screener/fieldRange", async (req, res) => {
     });
 });
 
+// 筛选股票
+app.get("/api/screener/sxStock", async (req, res) => {
+  const httpUrl = "https://xueqiu.com/service/screener/screen";
+  const params = req.query;
+  const promise = axios.get(httpUrl, {
+    ...options,
+    params: params,
+  });
+  promise
+    .then((result) => {
+      res.json(result.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");

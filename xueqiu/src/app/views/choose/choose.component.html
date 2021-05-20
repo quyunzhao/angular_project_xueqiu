@@ -13,7 +13,7 @@
       <!-- 1 -->
       <div class="rangeItem">
         <span>市场：</span>
-        <select name="rangeMarker">
+        <select name="rangeMarker1" [(ngModel)]="exchange">
           <option value="sh_sz">全部A股</option>
           <option value="sha">沪市A股</option>
           <option value="sza">深市A股</option>
@@ -22,7 +22,7 @@
       <!-- 2 -->
       <div class="rangeItem">
         <span>行业：</span>
-        <select name="rangeMarker">
+        <select name="rangeMarker2" [(ngModel)]="indcode">
           <option value="">全部</option>
           <option [value]="item.encode" *ngFor="let item of industriesList">
             {{ item.name }}
@@ -32,7 +32,7 @@
       <!-- 3 -->
       <div class="rangeItem">
         <span>地域板块：</span>
-        <select name="rangeMarker">
+        <select name="rangeMarker3" [(ngModel)]="areacode">
           <option value="">全部</option>
           <option [value]="item" *ngFor="let item of areaList">
             {{ areas[item] }}
@@ -215,7 +215,24 @@
         </div>
       </div>
     </div>
+    <div>
+      <button (click)="getStock()">开始选股</button>
+    </div>
     <!-- 筛选条件end -->
+
+    <!-- 筛选结果列表 -->
+    <h4>筛选结果列表</h4>
+    <div class="sxstockList">
+      <span>一共有{{ sxStocksLength }}条结果</span>
+      <div class="stockItem" *ngFor="let item of sxStocksList">
+        <span>
+          {{ item.name }}----->{{ item.symbol }}----->{{ item.current }}----->{{
+            item.indcode
+          }}
+        </span>
+      </div>
+    </div>
+    <!-- 筛选结果列表end -->
   </div>
   <div class="right"></div>
 </div>
