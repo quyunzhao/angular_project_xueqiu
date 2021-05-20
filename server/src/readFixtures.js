@@ -26,13 +26,20 @@ const readFile = {
     const arr = api.split("/");
     // api最后一项为文件名称
     let arrLast = arr[arr.length - 1];
-    var reg = /.json$/;
+    var reg1 = /.json$/;
 
-    arrLast = arrLast.replace(reg, "");
+    arrLast = arrLast.replace(reg1, "");
+
+    // 去除？后面的参数
+    var reg2 = /\?.*/;
+    arrLast = arrLast.replace(reg2, "");
+
+    // console.log(arrLast);
 
     const filename = arrLast + ".json";
     return filename;
   },
 };
+readFile.api2Pathname("/api/screener/stocks");
 
 module.exports = readFile;

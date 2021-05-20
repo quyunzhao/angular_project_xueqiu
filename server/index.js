@@ -203,17 +203,18 @@ app.get("/api/screener/Tools", async (req, res) => {
   const httpUrl = `https://xueqiu.com/hq/screener`;
 
   let result;
+  let content;
   try {
     result = await axios.get(httpUrl, options);
+    // 设置正则
+    let reg = /SNB.data.condition =(.*?);/gis;
+    // 匹配内容
+    // const content = result.data.match(reg);
+    content = reg.exec(result.data)[1];
+    res.send(content);
   } catch (error) {
     res.send(error);
   }
-  // 设置正则
-  let reg = /SNB.data.condition =(.*?);/gis;
-  // 匹配内容
-  // const content = result.data.match(reg);
-  const content = reg.exec(result.data)[1];
-  res.send(content);
 });
 
 // 本周新增
