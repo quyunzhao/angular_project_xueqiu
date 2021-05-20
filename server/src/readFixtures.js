@@ -34,6 +34,5 @@ const readFile = {
     return filename;
   },
 };
-// const result = readFile.readAsync("/api/index/quote");
 
 module.exports = readFile;

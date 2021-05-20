@@ -30,25 +30,31 @@ app.use((req, res, next) => {
 // 判断接口是否请求成功
 // 成功用原数据
 // 失败采用本地数据
-axios.interceptors.response.use(
-  (response) => {
-    // console.log("成功", response.status);
-    // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
-    // 否则的话抛出错误
-    if (response.status === 200) {
-      return Promise.resolve(response);
-    } else {
-      return Promise.reject(response);
+function readJson(req) {
+  axios.interceptors.response.use(
+    (response) => {
+      // console.log("成功", response.status);
+      // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
+      // 否则的话抛出错误
+      if (response.status === 200) {
+        return Promise.resolve(response);
+      } else {
+        return Promise.reject(response);
+      }
+    },
+    (error) => {
+      const reqURL = req.url;
+      var result = readFile.readAsync(reqURL);
+      return Promise.reject(result);
     }
-  },
-  (error) => {
-    const reqURL = error.config.url;
-    console.log(reqURL);
-    var result = readFile.readAsync(reqURL);
-    console.log(result);
-    return Promise.reject(result);
-  }
-);
+  );
+}
+// 调用本地数据
+app.use((req, res, next) => {
+  //
+  readJson(req);
+  next();
+});
 
 // 记录操作日志
 app.use((req, res, next) => {
@@ -93,7 +99,6 @@ app.get("/fixtures/quote", (req, res) => {
   const promise = axios.get(httpUrl, {});
   promise
     .then((result) => {
-      // console.log(result);
       res.json(result.data);
     })
     .catch((err) => {
