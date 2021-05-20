@@ -184,12 +184,35 @@
         <span class="headerItem">删除</span>
       </div>
       <!-- 筛选列表 -->
-      <div class="SelectedListContent" *ngFor="let item of stockSelectedList">
-        <span class="stockContentItem"> {{ item.name }}</span>
-        <span class="stockContentItem"> {{ item.min }}</span>
-        <span class="stockContentItem"> </span>
-        <span class="stockContentItem"> {{ item.min }}</span>
-        <span class="stockContentItem">删除</span>
+      <div class="SelectedListContent">
+        <div class="stockContentItem" *ngFor="let item of stockSelectedList">
+          <span class="stockContentSpan">
+            {{ item.name }}
+          </span>
+          <span class="stockContentSpan">
+            <input type="text" [(ngModel)]="item.Cmin" />
+          </span>
+          <span class="stockContentSpan">
+            <input
+              type="range"
+              [(ngModel)]="item.Cmin"
+              [attr.min]="item.min"
+              [attr.max]="item.max"
+            />
+          </span>
+          <span class="stockContentSpan">
+            <input type="text" [(ngModel)]="item.Cmax" />
+          </span>
+          <span class="stockContentSpan">
+            <input
+              type="range"
+              [(ngModel)]="item.Cmax"
+              [attr.min]="item.min"
+              [attr.max]="item.max"
+            />
+          </span>
+          <span class="stockContentSpan"> 删除 </span>
+        </div>
       </div>
     </div>
     <!-- 筛选条件end -->

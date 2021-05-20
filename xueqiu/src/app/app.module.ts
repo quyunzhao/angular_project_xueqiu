@@ -10,6 +10,7 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
 import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
 import { RecommendComponent } from './component/recommend/recommend.component';
 import { TotimePipe } from './pipe/totime.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { TotimePipe } from './pipe/totime.pipe';
     RecommendComponent,
     TotimePipe,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

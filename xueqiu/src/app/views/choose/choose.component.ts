@@ -85,9 +85,10 @@ export class ChooseComponent implements OnInit {
       params: item.field,
     };
     const result = await this.server.getFieldRange(options);
-    // console.log(result.data);
     item.min = result.data.min;
     item.max = result.data.max;
+    item.Cmin = item.min;
+    item.Cmax = item.max;
     this.updateStockList(item);
   }
 
