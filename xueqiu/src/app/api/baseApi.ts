@@ -1,3 +1,3 @@
 export const base = {
-  url: 'http://127.0.0.1:8080',
+  url: 'http://39.99.252.79:8080',
 };
