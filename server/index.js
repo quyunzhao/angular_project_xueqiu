@@ -337,6 +337,17 @@ app.get("/api/screener/sxStock", async (req, res) => {
     });
 });
 
+app.get("/api/loginCenter/logList", async (req, res) => {
+  const promise = OperationLog.getOperationLog();
+  promise
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");

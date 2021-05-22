@@ -6,13 +6,7 @@ const OperationLog = {
   // 获取日志
   getOperationLog: function getLog(params) {
     const promise = CURD.findDB();
-    promise
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return promise;
   },
 
   // 写日志

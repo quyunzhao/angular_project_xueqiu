@@ -60,9 +60,11 @@ const CURD_DB = {
       const test = conn.db(dbName).collection(documentName);
       // 查询
       var arr = await test.find().toArray();
+      conn.close();
       return arr;
     } catch (error) {
       console.log("错误：" + error);
+      conn.close();
     } finally {
       conn.close();
     }
