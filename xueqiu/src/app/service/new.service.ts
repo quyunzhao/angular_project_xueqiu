@@ -7,8 +7,26 @@ import { base } from '../api/baseApi';
 })
 export class NewService {
   public baseUrl = base.url;
+  // 后台端口地址
+  public port = base.port;
 
-  constructor() {}
+  constructor() {
+    const hostname = window.location.hostname;
+    const protocol = window.location.protocol;
+    this.baseUrl = protocol + '//' + hostname + ':' + this.port;
+  }
+
+  // 获取图片数据
+  async getImageData(): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/index/quote';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl);
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 
   // 雪球热帖
   async getHotList(): Promise<any> {

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 // 导入
 import { base } from '../../api/baseApi';
 import axios from 'axios';
+import { NewService } from 'src/app/service/new.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -26,7 +27,11 @@ export class IndexComponent implements OnInit {
   // tab 页签默认选中第一个
   tabActiveIndex = 0;
 
-  constructor(public router: Router, public route: ActivatedRoute) {
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute,
+    public server: NewService
+  ) {
     this.getData();
   }
 
@@ -42,11 +47,9 @@ export class IndexComponent implements OnInit {
 
   // 获取图片数据
   async getData(): Promise<void> {
-    const result = await axios.get(this.baseUrl + '/api/index/quote');
-    // console.log(result.data);
-    this.quoteList = result.data.data.items;
+    const result = await this.server.getImageData();
+    this.quoteList = result.data.items;
     this.quoteList = this.quoteList.slice(0, 9);
-    // console.log(this.quoteList);
   }
 
   // 切换指数
