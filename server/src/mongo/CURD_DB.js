@@ -12,7 +12,7 @@ const documentName = "api";
 const url = env.url + ":" + env.port + "/" + dbName;
 
 async function dataOperate() {
-  var conn = null;
+  let conn = null;
   try {
     conn = await MongoClient.connect(url);
     console.log("数据库已连接");
@@ -55,18 +55,17 @@ const CURD_DB = {
     }
   },
   findDB: async function (params) {
+    let conn = null;
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(documentName);
       // 查询
       var arr = await test.find().toArray();
-      conn.close();
       return arr;
     } catch (error) {
       console.log("错误：" + error);
-      conn.close();
     } finally {
-      conn.close();
+      if (conn != null) conn.close();
     }
   },
 };

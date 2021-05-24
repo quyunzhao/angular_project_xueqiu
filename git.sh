@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="部署"
+msg="修复查询数据报错问题"
 
 if [ -n "${msg}" ]; then
     git pull

@@ -65,7 +65,6 @@ export class ChooseComponent implements OnInit {
   async getTools(): Promise<void> {
     const result = await this.server.getTools();
     this.tabObj = result;
-    // console.log(this.tabObj);
     this.tools = this.tabObj;
     this.tabList = Object.keys(this.tabObj);
   }
