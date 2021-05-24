@@ -6,14 +6,15 @@ import { base } from '../api/baseApi';
   providedIn: 'root',
 })
 export class NewService {
-  public baseUrl = base.url;
   // 后台端口地址
   public port = base.port;
+  public protocol = base.protocol;
+  public hostname = base.hostname;
+
+  public baseUrl = '';
 
   constructor() {
-    const hostname = window.location.hostname;
-    const protocol = window.location.protocol;
-    this.baseUrl = protocol + '//' + hostname + ':' + this.port;
+    this.baseUrl = this.protocol + '//' + this.hostname + ':' + this.port;
   }
 
   // 获取图片数据

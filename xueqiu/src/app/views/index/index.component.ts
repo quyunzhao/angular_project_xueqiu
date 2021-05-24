@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 // 导入
-import { base } from '../../api/baseApi';
-import axios from 'axios';
 import { NewService } from 'src/app/service/new.service';
 @Component({
   selector: 'app-index',
@@ -11,9 +9,6 @@ import { NewService } from 'src/app/service/new.service';
   styleUrls: ['./index.component.less'],
 })
 export class IndexComponent implements OnInit {
-  // 服务器地址
-  public baseUrl = base.url;
-
   // 指数列表
   quoteList = [];
 
