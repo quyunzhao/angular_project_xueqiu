@@ -43,6 +43,7 @@ async function dataOperate() {
 }
 const CURD_DB = {
   creatDB: async function (params) {
+    let conn = null;
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(documentName);
@@ -51,7 +52,7 @@ const CURD_DB = {
     } catch (error) {
       console.log("错误：" + error);
     } finally {
-      conn.close();
+      if (conn != null) conn.close();
     }
   },
   findDB: async function (params) {
