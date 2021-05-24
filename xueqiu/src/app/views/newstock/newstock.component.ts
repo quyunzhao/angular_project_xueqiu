@@ -7,12 +7,18 @@ import { NewService } from 'src/app/service/new.service';
   styleUrls: ['./newstock.component.less'],
 })
 export class NewstockComponent implements OnInit {
+  start = 0;
+  limit = 10;
+  logList = [];
   constructor(public server: NewService) {}
 
   ngOnInit(): void {}
 
   async getLogList(): Promise<void> {
-    const result = await this.server.getLogList();
-    console.log(result);
+    const options = {
+      params: { limit: this.limit, skip: this.start },
+    };
+    const result = await this.server.getLogList(options);
+    this.logList = result;
   }
 }

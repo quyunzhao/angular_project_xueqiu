@@ -126,11 +126,11 @@ export class NewService {
   }
 
   // 获取日志
-  async getLogList(): Promise<any> {
+  async getLogList(options): Promise<any> {
     const httpUrl = this.baseUrl + '/api/loginCenter/logList';
     let promise;
     try {
-      promise = await axios.get(httpUrl);
+      promise = await axios.get(httpUrl, { params: options.params });
     } catch (error) {
       throw error;
     }

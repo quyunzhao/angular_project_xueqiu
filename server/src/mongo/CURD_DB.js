@@ -56,12 +56,15 @@ const CURD_DB = {
     }
   },
   findDB: async function (params) {
+    const skip = parseInt(params.skip);
+    const limit = parseInt(params.limit);
+    const sort = params.sort || { time: -1 };
     let conn = null;
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(documentName);
       // 查询
-      var arr = await test.find().toArray();
+      var arr = await test.find().sort(sort).skip(skip).limit(limit).toArray();
       return arr;
     } catch (error) {
       console.log("错误：" + error);

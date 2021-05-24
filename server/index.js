@@ -338,7 +338,8 @@ app.get("/api/screener/sxStock", async (req, res) => {
 });
 
 app.get("/api/loginCenter/logList", async (req, res) => {
-  const promise = OperationLog.getOperationLog();
+  const params = req.query;
+  const promise = OperationLog.getOperationLog(params);
   promise
     .then((result) => {
       res.json(result);

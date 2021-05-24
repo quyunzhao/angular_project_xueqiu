@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="title">
+  <div class="title" *ngIf="false">
     <h1>张大狗天下第一</h1>
     <h2>张大狗天下第一</h2>
     <h3>张大狗天下第一</h3>
@@ -10,6 +10,28 @@
 
   <!-- 查看列表 -->
   <div>
-    <button (click)="getLogList()">获取日志列表</button>
+    <button (click)="getLogList()">获取最近10条日志</button>
+
+    <table border="1" style="border-collapse: collapse">
+      <caption>
+        最近10条api请求
+      </caption>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>id</th>
+          <th>时间</th>
+          <th>api</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of logList; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ item._id }}</td>
+          <td>{{ item.time | date: "MM-dd HH:mm:ss" }}</td>
+          <td>{{ item.api }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

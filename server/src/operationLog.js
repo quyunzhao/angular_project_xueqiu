@@ -5,7 +5,7 @@ const CURD = require("./mongo/CURD_DB");
 const OperationLog = {
   // 获取日志
   getOperationLog: function getLog(params) {
-    const promise = CURD.findDB();
+    const promise = CURD.findDB(params);
     return promise;
   },
 
