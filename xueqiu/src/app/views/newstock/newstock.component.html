@@ -10,7 +10,16 @@
 
   <!-- 查看列表 -->
   <div>
-    <button (click)="getLogList()">获取最近10条日志</button>
+    <button (click)="getLogList()">获取日志</button>
+    <div>
+      <!-- start -->
+      <span> 起始 </span>
+      <input type="text" [(ngModel)]="start" />
+
+      <!-- limit -->
+      <span> 每页限制 </span>
+      <input type="text" [(ngModel)]="limit" />
+    </div>
 
     <table border="1" style="border-collapse: collapse">
       <caption>
