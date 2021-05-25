@@ -10,15 +10,15 @@
 
   <!-- 查看列表 -->
   <div>
-    <button (click)="getLogList()">获取日志</button>
     <div>
       <!-- start -->
-      <span> 起始 </span>
+      <span> 从第几条开始 </span>
       <input type="text" [(ngModel)]="start" />
 
       <!-- limit -->
-      <span> 每页限制 </span>
+      <span> 查询数量 </span>
       <input type="text" [(ngModel)]="limit" />
+      <button (click)="getLogList()">获取日志</button>
     </div>
 
     <table border="1" style="border-collapse: collapse">
@@ -28,7 +28,7 @@
       <thead>
         <tr>
           <th>序号</th>
-          <th>id</th>
+          <!-- <th>id</th> -->
           <th>时间</th>
           <th>api</th>
         </tr>
@@ -36,7 +36,7 @@
       <tbody *ngFor="let item of logList; let i = index">
         <tr>
           <td>{{ i + 1 }}</td>
-          <td>{{ item._id }}</td>
+          <!-- <td>{{ item._id }}</td> -->
           <td>{{ item.time | date: "MM-dd HH:mm:ss" }}</td>
           <td>{{ item.api }}</td>
         </tr>

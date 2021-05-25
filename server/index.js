@@ -16,8 +16,10 @@ const path = require("path");
 // 监听端口
 const port = 8080;
 
+// axios 全局配置
 // axios全局设置网络超时
 axios.defaults.timeout = 30 * 1000; // 30s
+axios.defaults.headers.common["quyunzhao"] = "nice";
 
 // 添加中间间
 // 添加请求头
@@ -51,7 +53,6 @@ function readJson(req) {
 }
 // 调用本地数据
 app.use((req, res, next) => {
-  //
   readJson(req);
   next();
 });
@@ -60,10 +61,6 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // 写日志
   OperationLog.writeOperationLog(Date.now(), req.url);
-
-  // 查日志
-  // OperationLog.getOperationLog(Date.now());
-
   next();
 });
 
@@ -337,12 +334,26 @@ app.get("/api/screener/sxStock", async (req, res) => {
     });
 });
 
+// 获取数据库日志
 app.get("/api/loginCenter/logList", async (req, res) => {
   const params = req.query;
   const promise = OperationLog.getOperationLog(params);
   promise
     .then((result) => {
       res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+// 测试默认请求参数
+app.get("/api/test/1", async (req, res) => {
+  const httpUrl = "https://xueqiu.com/service/screener/screen";
+  const promise = axios.get(httpUrl);
+  promise
+    .then((result) => {
+      res.json(result.data);
     })
     .catch((err) => {
       res.send(err);

@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
 
-msg="打包优化"
+msg="页面样式优化"
 
 if [ -n "${msg}" ]; then
     git pull
