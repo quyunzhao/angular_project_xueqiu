@@ -1,16 +1,7 @@
 <div class="content">
-  <div class="title" *ngIf="false">
-    <h1>张大狗天下第一</h1>
-    <h2>张大狗天下第一</h2>
-    <h3>张大狗天下第一</h3>
-    <h4>张大狗天下第一</h4>
-    <h5>张大狗天下第一</h5>
-    <h6>张大狗天下第一</h6>
-  </div>
-
   <!-- 查看列表 -->
-  <div>
-    <div>
+  <div class="filterContent">
+    <div class="filter">
       <!-- start -->
       <span> 从第几条开始 </span>
       <input type="text" [(ngModel)]="start" />
@@ -20,27 +11,29 @@
       <input type="text" [(ngModel)]="limit" />
       <button (click)="getLogList()">获取日志</button>
     </div>
-
-    <table border="1" style="border-collapse: collapse">
-      <caption>
-        最近10条api请求
-      </caption>
-      <thead>
-        <tr>
-          <th>序号</th>
-          <!-- <th>id</th> -->
-          <th>时间</th>
-          <th>api</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let item of logList; let i = index">
-        <tr>
-          <td>{{ i + 1 }}</td>
-          <!-- <td>{{ item._id }}</td> -->
-          <td>{{ item.time | date: "MM-dd HH:mm:ss" }}</td>
-          <td>{{ item.api }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- 日志列表 -->
+    <div class="logList">
+      <table>
+        <caption>
+          最近10条api请求
+        </caption>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <!-- <th>id</th> -->
+            <th>时间</th>
+            <th>api</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of logList; let i = index">
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <!-- <td>{{ item._id }}</td> -->
+            <td>{{ item.time | date: "MM-dd HH:mm:ss" }}</td>
+            <td>{{ item.api }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

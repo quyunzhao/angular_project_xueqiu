@@ -192,26 +192,29 @@
           <span class="stockContentSpan">
             <input type="text" [(ngModel)]="item.Cmin" />
           </span>
-          <span class="stockContentSpan">
+          <!-- <span class="stockContentSpan">
             <input
               type="range"
               [(ngModel)]="item.Cmin"
               [attr.min]="item.min"
               [attr.max]="item.max"
             />
-          </span>
+          </span> -->
+          <span class="stockContentSpan"> </span>
           <span class="stockContentSpan">
             <input type="text" [(ngModel)]="item.Cmax" />
           </span>
-          <span class="stockContentSpan">
+          <!-- <span class="stockContentSpan">
             <input
               type="range"
               [(ngModel)]="item.Cmax"
               [attr.min]="item.min"
               [attr.max]="item.max"
             />
+          </span> -->
+          <span class="stockContentSpan" (click)="checkField(item)">
+            删除
           </span>
-          <span class="stockContentSpan"> 删除 </span>
         </div>
       </div>
     </div>
@@ -224,12 +227,25 @@
     <h4>筛选结果列表</h4>
     <div class="sxstockList">
       <span>一共有{{ sxStocksLength }}条结果</span>
-      <div class="stockItem" *ngFor="let item of sxStocksList">
-        <span>
-          {{ item.name }}----->{{ item.symbol }}----->{{ item.current }}----->{{
-            item.indcode
-          }}
-        </span>
+      <div class="stockItem">
+        <table>
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>symbol</th>
+              <th>价格</th>
+              <th>indcode</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of sxStocksList">
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.symbol }}</td>
+              <td>{{ item.current }}</td>
+              <td>{{ item.indcode }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- 筛选结果列表end -->
