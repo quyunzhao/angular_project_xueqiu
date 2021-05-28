@@ -1,38 +1,7 @@
-<div class="header">
-  <div class="nav">
-    <div class="log">
-      <img src="../assets/images/logo.png" alt="" />
-      <img src="../assets/images/favicon.png" alt="" />
-    </div>
-    <div class="navlist">
-      <div
-        class="navitem"
-        [routerLink]="['/index']"
-        routerLinkActive="route-active"
-      >
-        首页
-      </div>
-      <div
-        class="navitem"
-        [routerLink]="['/screener']"
-        routerLinkActive="route-active"
-      >
-        股票筛选
-      </div>
-      <div
-        class="navitem"
-        [routerLink]="['/newStock']"
-        routerLinkActive="route-active"
-      >
-        新股上市
-      </div>
-    </div>
-    <!-- 搜索框 -->
-    <div class="search">
-      <input type="text" placeholder="请输入搜索的内容" />
-      <span class="searchIcon"></span>
-    </div>
-  </div>
-</div>
+<app-header></app-header>
 
+<!-- 路由 -->
 <router-outlet></router-outlet>
+
+<!-- 底部 -->
+<app-footer></app-footer>

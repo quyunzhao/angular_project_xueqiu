@@ -11,6 +11,8 @@ import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
 import { RecommendComponent } from './component/recommend/recommend.component';
 import { TotimePipe } from './pipe/totime.pipe';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './views/footer/footer.component';
+import { HeaderComponent } from './views/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { FormsModule } from '@angular/forms';
     DayinfoComponent,
     RecommendComponent,
     TotimePipe,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
