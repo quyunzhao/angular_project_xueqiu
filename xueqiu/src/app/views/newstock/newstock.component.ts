@@ -10,7 +10,10 @@ export class NewstockComponent implements OnInit {
   start = 0;
   limit = 10;
   logList = [];
-  constructor(public server: NewService) {}
+  constructor(public server: NewService) {
+    // 初始化加载
+    this.getLogList();
+  }
 
   ngOnInit(): void {}
 
