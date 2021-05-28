@@ -9,6 +9,7 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
 
 import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
 import { RecommendComponent } from './component/recommend/recommend.component';
+import { AdpageComponent } from './views/adpage/adpage.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'newStock',
     component: NewstockComponent,
+  },
+  {
+    path: 'advertisement',
+    component: AdpageComponent,
   },
 
   // 404

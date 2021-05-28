@@ -13,6 +13,7 @@ import { TotimePipe } from './pipe/totime.pipe';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './views/footer/footer.component';
 import { HeaderComponent } from './views/header/header.component';
+import { AdpageComponent } from './views/adpage/adpage.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HeaderComponent } from './views/header/header.component';
     TotimePipe,
     FooterComponent,
     HeaderComponent,
+    AdpageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
