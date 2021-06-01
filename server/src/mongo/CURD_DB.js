@@ -42,13 +42,15 @@ async function dataOperate() {
   }
 }
 const CURD_DB = {
-  creatDB: async function (params) {
+  creatDB: async function (options) {
     let conn = null;
+    const document_name = options.documentName || documentName;
+    const data = options.params.data || {};
     try {
       conn = await MongoClient.connect(url);
-      const test = conn.db(dbName).collection(documentName);
+      const test = conn.db(dbName).collection(document_name);
       // 增加
-      await test.insertOne(params);
+      await test.insertOne(data);
     } catch (error) {
       console.log("错误：" + error);
     } finally {

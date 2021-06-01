@@ -10,13 +10,15 @@ const OperationLog = {
   },
 
   // 写日志
-  writeOperationLog: function writeLog(time, api) {
+  writeOperationLog: function writeLog(options) {
+    // const api = options.url;
     // console.log(time, api);
-    var params = {
-      time: time,
-      api: api,
-    };
-    CURD.creatDB(params);
+    // const time = Date.now();
+    // var params = {
+    //   time: time,
+    //   api: api,
+    // };
+    CURD.creatDB(options);
   },
 
   // 删日志
