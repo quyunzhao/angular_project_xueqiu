@@ -64,10 +64,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// 打桩文件路径
-const fixtures = path.resolve("fixtures") + "\\";
-const cookie =
-  "device_id=24700f9f1986800ab4fcc880530dd0ed; s=e011hbwphk; acw_tc=2760820216213379066238706e80397a9a911c0f74053e789cddfd80ae55e9; xq_a_token=385b836a045da45667afda72237fc969313f56f0; xqat=385b836a045da45667afda72237fc969313f56f0; xq_r_token=f04bf9be3f04ead615a88752d56293c4ae5eec0b; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyMzgxMTc5NywiY3RtIjoxNjIxMzM3ODg3MjY3LCJjaWQiOiJkOWQwbjRBWnVwIn0.T1dWX4MCuHnrcQFkElE_yzqZJLd0jLhWLVjrP5msVBixd4Biak6IWtdGPr8ALN7T4jcwXGbBN3HFV0bcawnOwqoADH9llCaS1i_5SCQMK6GynosdkmWxCKBWEa4b97zsY_ajcg4-hlPeJ2MRUFT4GnsqlPHKLPoQf06CGeGkcNuArSpJcS4wNoho6e3jNnE4QvD30buxJrIQeAnQ64gST5AFQ3QLb-1t6yws1KS3v5xu5siLq2q46OcZV8WMeWJj7DPQ50DmjyAy4qcmAJTCYWtlGYNPOvUyw3LOv53hJizCohjFsC25At9gVjfTm8-m9CgArQmIWaqFd3bTuM7KYg; u=291621337906636; Hm_lvt_1db88642e346389874251b5a1eded6e3=1620219739,1621337955; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1621337955";
+let cookie =
+  "device_id=24700f9f1986800ab4fcc880530dd0ed; s=e011hbwphk; Hm_lvt_1db88642e346389874251b5a1eded6e3=1620219739,1621337955,1621944496,1622200026; xq_a_token=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xqat=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xq_r_token=c73c6ef7939ae99173067d99572528058c22bed7; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyNTEwNzgwNiwiY3RtIjoxNjIyNTQ2Nzc5OTYxLCJjaWQiOiJkOWQwbjRBWnVwIn0.f_VU2BgmdaFdLCvFsNlCG1sPy2jbyXLZS1aWFNuJl56Y8VBApvSDAgjE05ban3dGfAgcvBZrqEsBvpOroOBBkR9hnWRzpW4enrz6fSmQcnTYSjmKAuUHm5UazC2BNAn5OoBe6s6ojuf2yHrmJyT4Cow2x5HZWOWOY3Y_SOq0gExjMHQJtdq5hY6gXq8NxycBso37ZlyqJmXnMoM2akwkAILIBAeEBItBoD_dvYASYz-u_ZhuU4EBI7-ZNNw-bUT1U2p9GApReP5mw-Olsr0ASA-u7CU6iDryg0G73rghsWevtjPcLItkWrDDre87Zqj7xPhJOQePdCYsrvtgOcsK9Q; u=731622546789103; acw_tc=2760820616225485901077213e4abca1039990aa67e69af9ea2e2c34396570; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1622549944";
 
 const options = {
   // `headers` 是即将被发送的自定义请求头
@@ -104,6 +102,38 @@ app.get("/fixtures/quote", (req, res) => {
 });
 
 /* ----------------后台数据 --------*/
+function getCookie() {
+  axios.interceptors.response.use(
+    (res) => {
+      const { config, data, headers, status } = res;
+
+      // console.log(
+      //   `-----------------------${config.url}请求开始------------------------`
+      // );
+      // console.log(`接口地址：`, config.url);
+      // console.log(`接口请求方式：`, config.method);
+      // console.log(
+      //   `接口请求参数：`,
+      //   config.method === "get" ? config.params : config.data
+      // );
+      // console.log(`接口请求头：`, config.headers);
+      // console.log(`接口响应头：`, headers);
+      // console.log(`接口响应状态：`, status);
+      // console.log(`接口响应数据：`, data);
+
+      cookie = headers["set-cookie"].toString();
+      // console.log(cookie);
+      // console.log(
+      //   `-----------------------${config.url}请求结束------------------------`
+      // );
+      return res;
+    },
+    (err) => {
+      return Promise.reject(err);
+    }
+  );
+}
+
 // 指数数据
 app.get("/api/index/quote", (req, res) => {
   const httpUrl = "https://stock.xueqiu.com/v5/stock/batch/quote.json";
@@ -117,7 +147,6 @@ app.get("/api/index/quote", (req, res) => {
   });
   promise
     .then((result) => {
-      // console.log(result);
       res.json(result.data);
     })
     .catch((err) => {
