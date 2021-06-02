@@ -7,6 +7,9 @@ import { NewService } from 'src/app/service/new.service';
   styleUrls: ['./adpage.component.less'],
 })
 export class AdpageComponent implements OnInit {
+  text = '';
+  description = '';
+
   constructor(public server: NewService) {}
 
   ngOnInit(): void {}
@@ -15,8 +18,8 @@ export class AdpageComponent implements OnInit {
     const options = {
       params: {
         documentName: 'test',
-        text: '',
-        description: 'description',
+        text: this.text,
+        description: this.description,
       },
     };
     const result = await this.server.creatData(options);
