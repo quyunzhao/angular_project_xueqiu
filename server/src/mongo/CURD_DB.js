@@ -45,7 +45,12 @@ const CURD_DB = {
   creatDB: async function (options) {
     let conn = null;
     const document_name = options.documentName || documentName;
-    const data = options.params.data || {};
+    const time = Date.now();
+    const data =
+      {
+        ...options.params,
+        time: time,
+      } || {};
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(document_name);

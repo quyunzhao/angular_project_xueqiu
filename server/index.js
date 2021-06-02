@@ -60,10 +60,10 @@ app.use((req, res, next) => {
 // 记录操作日志
 app.use((req, res, next) => {
   const options = {
-    url: req.url,
     documentName: "api",
     params: {
-      data: { text: req.url, api: req.url, time: Date.now() },
+      text: req.url,
+      api: req.url,
     },
   };
   // 写日志
@@ -385,13 +385,11 @@ app.get("/api/loginCenter/logList", async (req, res) => {
 
 // 向数据库写数据
 app.get("/api/database/creat", async (req, res) => {
-  // const params = req.query;
+  const params = req.query;
+  const documentName = req.query.documentName;
   const options = {
-    url: req.url,
-    documentName: "advert",
-    params: {
-      data: { text: "这是一段测试文字", api: req.url, time: Date.now() },
-    },
+    documentName: documentName,
+    params: { ...params },
   };
   OperationLog.writeOperationLog(options);
   res.send("ok");

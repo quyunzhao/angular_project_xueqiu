@@ -136,4 +136,16 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 写写数据
+  async creatData(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/database/creat';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl, { params: options.params });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }
