@@ -26,6 +26,8 @@ axios.defaults.headers.common["quyunzhao"] = "nice";
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Content-Type", "*");
+  res.append("Access-Control-Allow-Headers", "*");
+
   next();
 });
 
