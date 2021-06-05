@@ -23,6 +23,8 @@ export class AdpageComponent implements OnInit {
       },
     };
     const result = await this.server.creatData(options);
+    this.text = '';
+    this.description = '';
     console.log(result);
   }
 }
