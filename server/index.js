@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 
 const axios = require("axios");
@@ -6,12 +8,13 @@ const app = express();
 
 // 导入操作日志模块
 const OperationLog = require("./src/operationLog");
+// import OperationLog from "./src/operationLog";
 
 // 读取本地数据
 const readFile = require("./src/readFixtures");
+// import readFile from "./src/readFixtures";
 
 // 导入路径模块
-const path = require("path");
 
 // 监听端口
 const port = 8080;
@@ -74,7 +77,7 @@ app.use((req, res, next) => {
 });
 
 let cookie =
-  "device_id=24700f9f1986800ab4fcc880530dd0ed; s=e011hbwphk; Hm_lvt_1db88642e346389874251b5a1eded6e3=1620219739,1621337955,1621944496,1622200026; xq_a_token=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xqat=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xq_r_token=c73c6ef7939ae99173067d99572528058c22bed7; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyNTEwNzgwNiwiY3RtIjoxNjIyNTQ2Nzc5OTYxLCJjaWQiOiJkOWQwbjRBWnVwIn0.f_VU2BgmdaFdLCvFsNlCG1sPy2jbyXLZS1aWFNuJl56Y8VBApvSDAgjE05ban3dGfAgcvBZrqEsBvpOroOBBkR9hnWRzpW4enrz6fSmQcnTYSjmKAuUHm5UazC2BNAn5OoBe6s6ojuf2yHrmJyT4Cow2x5HZWOWOY3Y_SOq0gExjMHQJtdq5hY6gXq8NxycBso37ZlyqJmXnMoM2akwkAILIBAeEBItBoD_dvYASYz-u_ZhuU4EBI7-ZNNw-bUT1U2p9GApReP5mw-Olsr0ASA-u7CU6iDryg0G73rghsWevtjPcLItkWrDDre87Zqj7xPhJOQePdCYsrvtgOcsK9Q; u=731622546789103; acw_tc=2760820616225485901077213e4abca1039990aa67e69af9ea2e2c34396570; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1622549944";
+  "acw_tc=2760820416235832852398345e9500281813f4ebc9996737abd46aa2ed34d1; xq_a_token=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xqat=ac3c2b00373aafa819dd63230fff55140e7d0bb4; xq_r_token=c73c6ef7939ae99173067d99572528058c22bed7; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYyNTEwNzgwNiwiY3RtIjoxNjIzNTgzMjM2NzY3LCJjaWQiOiJkOWQwbjRBWnVwIn0.Cx6K-KCpD_6yAO13m-FFTD4CThWrnbHEI2QQ81bf5ATgMlRu6bWJmWo7xV-1cJeHMJ_cBHfEbuUpqW18MYvYNMyXvnBiH4AjS1ndKMdy1JaYRVtGtqiAV48TdR5xsyhN0QA898MQ2DYq0jtAk_XMEpXGSdM7DsVrX890a6PT2W7jIvAnX0nOJ1JbLFh10wFtsgDy4qmtRkT5jSUsuzFw-9gX3jFjc64wniro-i7tZ9eJKrrTA8S_VmBR2DB3ISt4PwmSrla5jTrCwYQbzH27uVEQRYz1ZaeYqJuCpsV38Jb0-R3VYQLFXqXU8epnI_U6TkZzX77UwVfCvXU1JFIIag; u=131623583285246; Hm_lvt_1db88642e346389874251b5a1eded6e3=1623583287; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1623583287; device_id=24700f9f1986800ab4fcc880530dd0ed";
 
 const options = {
   // `headers` 是即将被发送的自定义请求头
