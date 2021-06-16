@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
-    "build": "ng build --base-href ./ --prod",
+    "start": "ng serve --host 0.0.0.0 --open",
+    "build": "ng build  --prod --build--optimizer --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
