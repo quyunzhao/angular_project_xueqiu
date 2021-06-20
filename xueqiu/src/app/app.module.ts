@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
+import { AppService } from './app.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './views/index/index.component';
@@ -29,8 +31,9 @@ import { AdpageComponent } from './views/adpage/adpage.component';
     HeaderComponent,
     AdpageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  // import HttpClientModule after BrowserModule.
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [AppService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
