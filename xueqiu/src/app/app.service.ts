@@ -12,14 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AppService {
-  constructor(private http: HttpClient) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'my-auth-token',
-      }),
-    };
-  }
+  constructor(private http: HttpClient) {}
   // http://121.89.222.80/xueqiu#/index/recommend?key=recommend
   private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.status === 0) {
@@ -38,10 +31,18 @@ export class AppService {
 
   getConfig(): Observable<Config> {
     const url = '/api/index/quote';
-    return this.http.get<Config>(url, { observe: 'response' }).pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError)
-    );
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token',
+      }),
+    };
+    return this.http
+      .get<Config>(url, { observe: 'response', ...httpOptions })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError)
+      );
   }
 
   /** POST: add a new hero to the database */
