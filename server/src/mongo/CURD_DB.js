@@ -82,17 +82,13 @@ const CURD_DB = {
   },
   deleteDB: async function (params) {
     let conn = null;
-    const whereStr = { _id: params._id }; // 查询条件
-    console.log(whereStr);
     const document_name = params.documentName || documentName;
-    console.log(document_name);
 
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(document_name);
       // 查询
-      const arr = await test.deleteOne(whereStr);
-      // console.log(arr);
+      const arr = await test.deleteOne({ _id: params._id });
       return arr;
     } catch (error) {
       console.log("错误：" + error);
