@@ -22,8 +22,8 @@ const OperationLog = {
   },
 
   // 删日志
-  deleteOperationLog: function deleteLog(time, api) {
-    console.log(time, api);
+  deleteOperationLog: function deleteLog(params) {
+    return CURD.deleteDB(params);
   },
 };
 

@@ -160,4 +160,15 @@ export class NewService {
     }
     return promise.data;
   }
+  // 删除广告
+  async deleteAdvertList(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/loginCenter/deleteAdvert';
+    let promise;
+    try {
+      promise = await axios.delete(httpUrl, { params: options });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }

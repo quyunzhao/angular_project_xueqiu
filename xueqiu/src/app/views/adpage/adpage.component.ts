@@ -48,8 +48,12 @@ export class AdpageComponent implements OnInit {
     console.log(result);
   }
 
-  deleteAd(item): void {
+  async deleteAd(item): Promise<void> {
     const id = item._id;
-    console.log(id);
+    const options = {
+      _id: id,
+    };
+    const result = await this.server.deleteAdvertList(options);
+    console.log(result);
   }
 }

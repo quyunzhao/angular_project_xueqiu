@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Content-Type", "*");
   res.append("Access-Control-Allow-Headers", "*");
-
+  res.append("Access-Control-Allow-Methods", "*");
   next();
 });
 
@@ -419,6 +419,23 @@ app.get("/api/loginCenter/advertList", async (req, res) => {
   const documentName = "test";
   params.documentName = documentName;
   const promise = OperationLog.getOperationLog(params);
+  promise
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+// 删除广告消息
+app.delete("/api/loginCenter/deleteAdvert", async (req, res) => {
+  const params = req.query;
+  const documentName = "test";
+  params.documentName = documentName;
+  const promise = OperationLog.deleteOperationLog(params);
+  // res.send(promise);
+
   promise
     .then((result) => {
       res.json(result);
