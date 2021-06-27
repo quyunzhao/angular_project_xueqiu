@@ -413,6 +413,21 @@ app.get("/api/test/1", async (req, res) => {
     });
 });
 
+// 获取广告消息
+app.get("/api/loginCenter/advertList", async (req, res) => {
+  const params = req.query;
+  const documentName = "test";
+  params.documentName = documentName;
+  const promise = OperationLog.getOperationLog(params);
+  promise
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 // 监听端口
 app.listen(port, () => {
   console.log("server start", "http://localhost:8080");

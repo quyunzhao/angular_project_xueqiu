@@ -148,4 +148,16 @@ export class NewService {
     }
     return promise.data;
   }
+
+  // 获取广告
+  async getAdvertList(options): Promise<any> {
+    const httpUrl = this.baseUrl + '/api/loginCenter/advertList';
+    let promise;
+    try {
+      promise = await axios.get(httpUrl, { params: options.params });
+    } catch (error) {
+      throw error;
+    }
+    return promise.data;
+  }
 }

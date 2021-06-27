@@ -66,10 +66,11 @@ const CURD_DB = {
     const skip = parseInt(params.skip);
     const limit = parseInt(params.limit);
     const sort = params.sort || { time: -1 };
+    const document_name = params.documentName || documentName;
     let conn = null;
     try {
       conn = await MongoClient.connect(url);
-      const test = conn.db(dbName).collection(documentName);
+      const test = conn.db(dbName).collection(document_name);
       // 查询
       var arr = await test.find().sort(sort).skip(skip).limit(limit).toArray();
       return arr;
