@@ -6,7 +6,9 @@
       <span class="headerImg">
         <!-- 循环用户头像 -->
         <img
-          [src]="'../../../assets/images/userIcon/' + (i % 7) + '.png'"
+          [src]="
+            imageConvert('../../../assets/images/userIcon/' + (i % 7) + '.png')
+          "
           alt=""
         />
       </span>

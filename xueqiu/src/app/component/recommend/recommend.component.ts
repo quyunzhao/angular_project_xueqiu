@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 
 // 导入服务
 import { NewService } from 'src/app/service/new.service';
@@ -24,10 +25,6 @@ export class RecommendComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      // tabObj[params.id];
-      // console.log(params.key);
-      // console.log(tabObj[params.key]);
-
       const promise = this.server.getHotList();
       promise
         .then((result) => {
@@ -39,5 +36,9 @@ export class RecommendComponent implements OnInit {
           throw err;
         });
     });
+  }
+
+  imageConvert(url): string {
+    return AppService.imageConvert(url);
   }
 }
