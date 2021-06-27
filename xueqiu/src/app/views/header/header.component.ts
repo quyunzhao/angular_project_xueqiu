@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
   imageConvert(url): string {
     return AppService.imageConvert(url);
   }
