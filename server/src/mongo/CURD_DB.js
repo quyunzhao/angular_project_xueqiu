@@ -88,11 +88,12 @@ const CURD_DB = {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(document_name);
       // 查询
-      const arr = await test.deleteOne({ _id: params._id });
+      const arr = await test.deleteMany({ time: params.time });
       return arr;
     } catch (error) {
       console.log("错误：" + error);
     } finally {
+      console.log("结束");
       if (conn != null) conn.close();
     }
   },

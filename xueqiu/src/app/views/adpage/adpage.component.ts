@@ -32,6 +32,7 @@ export class AdpageComponent implements OnInit {
     const result = await this.server.creatData(options);
     this.text = '';
     this.description = '';
+    this.getAdvertList();
 
     console.log(result);
   }
@@ -52,6 +53,7 @@ export class AdpageComponent implements OnInit {
     const id = item._id;
     const options = {
       _id: id,
+      time: item.time,
     };
     const result = await this.server.deleteAdvertList(options);
     console.log(result);
