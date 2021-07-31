@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './views/footer/footer.component';
 import { HeaderComponent } from './views/header/header.component';
 import { AdpageComponent } from './views/adpage/adpage.component';
+import { MapsComponent } from './views/maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AdpageComponent } from './views/adpage/adpage.component';
     FooterComponent,
     HeaderComponent,
     AdpageComponent,
+    MapsComponent,
   ],
   // import HttpClientModule after BrowserModule.
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],

@@ -10,6 +10,7 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
 import { DayinfoComponent } from './component/dayinfo/dayinfo.component';
 import { RecommendComponent } from './component/recommend/recommend.component';
 import { AdpageComponent } from './views/adpage/adpage.component';
+import { MapsComponent } from './views/maps/maps.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'advertisement',
     component: AdpageComponent,
+  },
+  {
+    path: 'maps',
+    component: MapsComponent,
   },
 
   // 404

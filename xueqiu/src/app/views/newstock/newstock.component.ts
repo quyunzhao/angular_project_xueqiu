@@ -23,6 +23,6 @@ export class NewstockComponent implements OnInit {
     };
     const result = await this.server.getLogList(options);
     this.logList = result;
-    console.log(result);
+    // console.log(result);
   }
 }

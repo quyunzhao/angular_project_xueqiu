@@ -34,7 +34,7 @@ export class AdpageComponent implements OnInit {
     this.description = '';
     this.getAdvertList();
 
-    console.log(result);
+    // console.log(result);
   }
 
   async getAdvertList(): Promise<void> {
@@ -46,7 +46,7 @@ export class AdpageComponent implements OnInit {
     };
     const result = await this.server.getAdvertList(options);
     this.advertList = result;
-    console.log(result);
+    // console.log(result);
   }
 
   async deleteAd(item): Promise<void> {
@@ -56,6 +56,6 @@ export class AdpageComponent implements OnInit {
       time: item.time,
     };
     const result = await this.server.deleteAdvertList(options);
-    console.log(result);
+    // console.log(result);
   }
 }
