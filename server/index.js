@@ -19,8 +19,6 @@ const readFile = require("./src/readFixtures");
 // 获取认证
 const cookie = require("./cookie");
 
-console.log(cookie);
-
 // 监听端口
 const port = 8080;
 
