@@ -4,7 +4,8 @@ const path = require("path");
 const fs = require("fs");
 
 // 打桩文件路径
-const fixtures = path.resolve("src", "fixtures") + "/";
+// const fixtures = path.resolve("src", "fixtures") + "/";
+const fixtures = path.join(__dirname, "fixtures/");
 const readFile = {
   // 异步
   read: function (filename = "test.json") {
