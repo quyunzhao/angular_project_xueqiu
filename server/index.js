@@ -16,6 +16,11 @@ const readFile = require("./src/readFixtures");
 
 // 导入路径模块
 
+// 获取认证
+const cookie = require("./cookie");
+
+console.log(cookie);
+
 // 监听端口
 const port = 8080;
 
@@ -75,9 +80,6 @@ app.use((req, res, next) => {
   OperationLog.writeOperationLog(options);
   next();
 });
-
-const cookie =
-  "device_id=28f7a10f5b8820e47592a68f5dd878fb; acw_tc=2760829816311867514565146ec4edbec894ba4f88e9ba00de284a5f99363c; xq_a_token=a6e746ce0d133a885cd1932debc192998c0f4dae; xqat=a6e746ce0d133a885cd1932debc192998c0f4dae; xq_r_token=d56ed16c62b73e8810c19ec04afc4e1602254687; xq_id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOi0xLCJpc3MiOiJ1YyIsImV4cCI6MTYzMzI4MjI3OCwiY3RtIjoxNjMxMTg2NzQxNDIyLCJjaWQiOiJkOWQwbjRBWnVwIn0.KfPJJp5-djgfcQuuCzMZ3O0yn8I9wyeBxtpjKfbCEK6yBZ_UuSYqaP9Ea7kEZ1A850Pw5Pv4Bb0v1P_JG6qLydaT5iGF_9VhYcRpbR7xD9qgZFfihZotZwmV-1GBS3E_wMFt-0lCEEY2CxNSLF75bulS-b51IXVrEug2fLTyG-VgY8B0PV9dvuxXGW-15gHcSqgBEVwzG9y1spnoAL0lf4cS0rxQO8C7Uv7rY2F-dA6CxFLAcNQ9mvByt55SeE80kNd0UcZ80bfHRpXm2GxlSZTIo_QWE9C9y0MEqz5uPiE_NeGOHbKXNl1tyo6sqefxGgh9PjksIxPKbFEN6wROeA; u=361631186751820; Hm_lvt_1db88642e346389874251b5a1eded6e3=1629115035,1630411298,1631186750; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1631186750";
 
 const options = {
   // `headers` 是即将被发送的自定义请求头
