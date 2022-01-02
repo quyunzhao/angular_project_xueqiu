@@ -1,5 +1,3 @@
-const path = require("path");
-
 const express = require("express");
 
 const axios = require("axios");
@@ -25,7 +23,7 @@ const port = 8080;
 // axios 全局配置
 // axios全局设置网络超时
 axios.defaults.timeout = 30 * 1000; // 30s
-axios.defaults.headers.common["quyunzhao"] = "nice";
+axios.defaults.headers.common["quYunZhao"] = "nice";
 
 // 添加中间间
 // 添加请求头
@@ -101,7 +99,6 @@ app.get("/", (req, res) => {
 app.get("/fixtures/quote", (req, res) => {
   // const httpUrl = fixtures + "quote.json";
   const httpUrl = "http://127.0.0.1:5500/server/fixtures/quote.json";
-  console.log(httpUrl);
 
   const promise = axios.get(httpUrl, {});
   promise
