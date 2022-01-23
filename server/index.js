@@ -2,11 +2,12 @@ const express = require("express");
 
 const axios = require("axios");
 
+const { getIp } = require("./src/ip");
+
 const app = express();
 
 // 导入操作日志模块
 const OperationLog = require("./src/operationLog");
-// import OperationLog from "./src/operationLog";
 
 // 读取本地数据
 const readFile = require("./src/readFixtures");
@@ -70,6 +71,7 @@ app.use((req, res, next) => {
     params: {
       text: req.url,
       api: req.url,
+      ip: getIp(req),
     },
   };
   // 写日志

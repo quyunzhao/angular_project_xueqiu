@@ -23,6 +23,7 @@
             <!-- <th>id</th> -->
             <th>时间</th>
             <th>api</th>
+            <th>ip</th>
           </tr>
         </thead>
         <tbody *ngFor="let item of logList; let i = index">
@@ -31,6 +32,7 @@
             <!-- <td>{{ item._id }}</td> -->
             <td>{{ item.time | date: "MM-dd HH:mm:ss" }}</td>
             <td>{{ item.api }}</td>
+            <td>{{ item?.ip }}</td>
           </tr>
         </tbody>
       </table>
