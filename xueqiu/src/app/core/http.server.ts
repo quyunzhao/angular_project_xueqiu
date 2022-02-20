@@ -28,12 +28,4 @@ export class HttpService {
     }
     return throwError('Something bad happened; please try again later.');
   }
-
-  getConfig(): Observable<Config> {
-    const url = '/api/index/quote';
-    return this.http.get<Config>(url, { observe: 'response' }).pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError)
-    );
-  }
 }
