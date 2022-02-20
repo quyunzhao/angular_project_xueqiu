@@ -1,5 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
-
+// 引用ObjectId类型
+const ObjectId = require("mongodb").ObjectId;
 // 环境配置
 const env = require("./config");
 
@@ -20,6 +21,7 @@ const CURD_DB = {
       {
         ...options.params,
         time: time,
+        status: 1,
       } || {};
     try {
       conn = await MongoClient.connect(url);
@@ -42,7 +44,12 @@ const CURD_DB = {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(document_name);
       // 查询
-      var arr = await test.find().sort(sort).skip(skip).limit(limit).toArray();
+      var arr = await test
+        .find({ status: 1 })
+        .sort(sort)
+        .skip(skip)
+        .limit(limit)
+        .toArray();
       return arr;
     } catch (error) {
       console.log("错误：" + error);
@@ -57,8 +64,11 @@ const CURD_DB = {
     try {
       conn = await MongoClient.connect(url);
       const test = conn.db(dbName).collection(document_name);
-      // 查询
-      const arr = await test.deleteMany({ time: params.time });
+      // 更新
+      const arr = await test.updateOne(
+        { _id: ObjectId(params._id) },
+        { $set: { status: 0 } }
+      );
       return arr;
     } catch (error) {
       console.log("错误：" + error);

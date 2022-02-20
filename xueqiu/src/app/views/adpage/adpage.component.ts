@@ -24,7 +24,7 @@ export class AdpageComponent implements OnInit {
     }
     const options = {
       params: {
-        documentName: 'test',
+        documentName: 'advert',
         text: this.text,
         description: this.description,
       },
@@ -55,7 +55,12 @@ export class AdpageComponent implements OnInit {
       _id: id,
       time: item.time,
     };
-    const result = await this.server.deleteAdvertList(options);
-    // console.log(result);
+    await this.server.deleteAdvertList(options);
+
+    try {
+      this.getAdvertList();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

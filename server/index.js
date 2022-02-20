@@ -66,12 +66,16 @@ app.use((req, res, next) => {
 
 // 记录操作日志
 app.use((req, res, next) => {
+  res.setHeader("remoteAddress", req.socket.remoteAddress);
+  res.setHeader("x-forwarded-for", req.headers["x-forwarded-for"] || "1");
+  res.setHeader("x-real-ip", req.headers["x-real-ip"] || "1");
   const options = {
     documentName: "api",
     params: {
       text: req.url,
       api: req.url,
       ip: getIp(req),
+      remoteAddress: req.socket.remoteAddress,
     },
   };
   // 写日志
@@ -415,9 +419,8 @@ app.get("/api/test/1", async (req, res) => {
 // 获取广告消息
 app.get("/api/loginCenter/advertList", async (req, res) => {
   const params = req.query;
-  const documentName = "test";
-  params.documentName = documentName;
-  const promise = OperationLog.getOperationLog(params);
+  const documentName = "advert";
+  const promise = OperationLog.getOperationLog({ ...params, documentName });
   promise
     .then((result) => {
       res.json(result);
@@ -430,18 +433,17 @@ app.get("/api/loginCenter/advertList", async (req, res) => {
 // 删除广告消息
 app.delete("/api/loginCenter/deleteAdvert", async (req, res) => {
   const params = req.query;
-  const documentName = "test";
-  params.documentName = documentName;
-  const promise = OperationLog.deleteOperationLog(params);
-  // res.send(promise);
+  const documentName = "advert";
+  OperationLog.deleteOperationLog({ ...params, documentName });
+  res.send("ok");
 
-  promise
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+  // promise
+  //   .then((result) => {
+  //     res.json(result);
+  //   })
+  //   .catch((err) => {
+  //     res.send(err);
+  //   });
 });
 
 // 监听端口
