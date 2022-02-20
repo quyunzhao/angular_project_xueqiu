@@ -117,37 +117,6 @@ app.get("/fixtures/quote", (req, res) => {
 });
 
 /* ----------------后台数据 --------*/
-function getCookie() {
-  axios.interceptors.response.use(
-    (res) => {
-      const { config, data, headers, status } = res;
-
-      // console.log(
-      //   `-----------------------${config.url}请求开始------------------------`
-      // );
-      // console.log(`接口地址：`, config.url);
-      // console.log(`接口请求方式：`, config.method);
-      // console.log(
-      //   `接口请求参数：`,
-      //   config.method === "get" ? config.params : config.data
-      // );
-      // console.log(`接口请求头：`, config.headers);
-      // console.log(`接口响应头：`, headers);
-      // console.log(`接口响应状态：`, status);
-      // console.log(`接口响应数据：`, data);
-
-      cookie = headers["set-cookie"].toString();
-      // console.log(cookie);
-      // console.log(
-      //   `-----------------------${config.url}请求结束------------------------`
-      // );
-      return res;
-    },
-    (err) => {
-      return Promise.reject(err);
-    }
-  );
-}
 
 // 指数数据
 app.get("/api/index/quote", (req, res) => {
@@ -397,30 +366,20 @@ app.get("/api/database/creat", async (req, res) => {
   const documentName = req.query.documentName;
   const options = {
     documentName: documentName,
-    params: { ...params },
+    params: { ...params, ip: getIp(req) },
   };
   OperationLog.writeOperationLog(options);
   res.send("ok");
-});
-
-// 测试默认请求参数
-app.get("/api/test/1", async (req, res) => {
-  const httpUrl = "https://xueqiu.com/service/screener/screen";
-  const promise = axios.get(httpUrl);
-  promise
-    .then((result) => {
-      res.json(result.data);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
 });
 
 // 获取广告消息
 app.get("/api/loginCenter/advertList", async (req, res) => {
   const params = req.query;
   const documentName = "advert";
-  const promise = OperationLog.getOperationLog({ ...params, documentName });
+  const promise = OperationLog.getOperationLog({
+    ...params,
+    documentName,
+  });
   promise
     .then((result) => {
       res.json(result);
@@ -436,14 +395,6 @@ app.delete("/api/loginCenter/deleteAdvert", async (req, res) => {
   const documentName = "advert";
   OperationLog.deleteOperationLog({ ...params, documentName });
   res.send("ok");
-
-  // promise
-  //   .then((result) => {
-  //     res.json(result);
-  //   })
-  //   .catch((err) => {
-  //     res.send(err);
-  //   });
 });
 
 // 监听端口
