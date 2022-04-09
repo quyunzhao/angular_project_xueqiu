@@ -142,7 +142,7 @@ export class NewService {
     const httpUrl = this.baseUrl + '/api/database/creat';
     let promise;
     try {
-      promise = await axios.get(httpUrl, { params: options.params });
+      promise = await axios.post(httpUrl, { ...options.params });
     } catch (error) {
       throw error;
     }

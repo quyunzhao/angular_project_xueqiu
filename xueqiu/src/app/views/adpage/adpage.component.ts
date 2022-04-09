@@ -29,12 +29,14 @@ export class AdpageComponent implements OnInit {
         description: this.description,
       },
     };
-    const result = await this.server.creatData(options);
-    this.text = '';
-    this.description = '';
-    this.getAdvertList();
-
-    // console.log(result);
+    await this.server.creatData(options);
+    try {
+      this.text = '';
+      this.description = '';
+      this.getAdvertList();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async getAdvertList(): Promise<void> {
